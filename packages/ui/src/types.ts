@@ -1,7 +1,3 @@
-// packages/sections/src/types.ts
-// All shared content types for section components.
-// The website's types/experience.ts imports and re-exports from here.
-
 export type ExperienceRadius = "none" | "sm" | "md" | "lg" | "full"
 
 export interface NavLink {
@@ -44,17 +40,18 @@ export interface StatsContent {
 }
 
 export interface PricingTier {
-  name:     string
-  price:    number
-  period:   string
-  features: string[]
-  cta:      string
-  featured: boolean
+  name:        string
+  price:       string
+  description: string
+  features:    string[]
+  cta:         { label: string; href: string }
+  featured:    boolean
 }
 
 export interface PricingContent {
-  headline: string
-  tiers:    PricingTier[]
+  headline:    string
+  subheadline: string
+  plans:       PricingTier[]
 }
 
 export interface FAQItem {
@@ -63,19 +60,32 @@ export interface FAQItem {
 }
 
 export interface FAQContent {
-  headline: string
-  items:    FAQItem[]
+  headline:    string
+  subheadline: string
+  items:       FAQItem[]
 }
 
 export interface CTAContent {
-  headline: string
-  body:     string
-  cta:      { label: string; href: string }
+  headline:     string
+  subheadline:  string
+  primaryCta:   { label: string; href: string }
+  secondaryCta?: { label: string; href: string }
+}
+
+export interface FooterLinkGroup {
+  title: string
+  items: NavLink[]
+}
+
+export interface FooterSocial {
+  platform: string
+  href:     string
 }
 
 export interface FooterContent {
-  logo:      string
-  tagline:   string
-  copyright: string
-  links:     NavLink[]
+  brandName:    string
+  brandTagline: string
+  copyright:    string
+  links:        FooterLinkGroup[]
+  social:       FooterSocial[]
 }
