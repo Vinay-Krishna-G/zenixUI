@@ -96,6 +96,7 @@ When a decision is unclear, apply these ten principles in order.
 8. **The exported project must outlive ZenixUI** — if zenixui.com shuts down, customers are unaffected
 9. **Every feature must have a customer** — founders, freelancers, agencies, or developers — name them
 10. **Ship before expanding** — one vertical slice done beautifully beats five slices done adequately
+11. **Opinionated by Default** — expose the 20% of controls that create 80% of the value. Do not recreate a website builder.
 
 ---
 
@@ -125,3 +126,10 @@ A developer who has never seen ZenixUI should be able to:
 Without reading ZenixUI documentation.
 
 If all six of these are true, the product promise has been kept.
+
+---
+
+## Core KPIs
+
+1. **Time to Export**: `< 20 minutes` (from discovering the platform to downloading a personalized Next.js zip).
+2. **Time to First "Wow"**: `< 30 seconds` (a user lands, clicks an experience, changes the brand color and headline, and feels "This is mine").
