@@ -11,6 +11,7 @@
     "lint": "npm run lint --workspace=apps/website"
   },
   "devDependencies": {
+    "playwright": "^1.61.1",
     "tsx": "^4.23.1"
   }
 }

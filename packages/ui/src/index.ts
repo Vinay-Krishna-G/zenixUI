@@ -10,3 +10,6 @@ export { Pricing }  from "./pricing/Pricing"
 export { FAQ }      from "./faq/FAQ"
 export { CTA }      from "./cta/CTA"
 export { Footer }   from "./footer/Footer"
+
+// Types
+export * from "./types"
