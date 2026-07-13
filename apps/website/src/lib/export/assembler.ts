@@ -248,7 +248,7 @@ body {
     if (fileName === folderName + ".tsx" || fileName.toLowerCase() === folderName.toLowerCase() + ".tsx") {
       const componentName = fileName.replace(".tsx", "")
       
-      if (includedSections.includes(componentName)) {
+      if (includedSections.includes(componentName) || includedSections.includes(componentName.toLowerCase())) {
         files[`components/${fileName}`] = code
         sectionImports.push(`import { ${componentName} } from "@/components/${componentName}"`)
         sectionElements.push(`      <${componentName} content={content.${componentName.toLowerCase()}} />`)

@@ -130,7 +130,29 @@ If all six of these are true, the product promise has been kept.
 
 ---
 
-## Core KPIs
+## The Five-Minute Test
 
-1. **Time to Export**: `< 20 minutes` (from discovering the platform to downloading a personalized Next.js zip).
-2. **Time to First "Wow"**: `< 30 seconds` (a user lands, clicks an experience, changes the brand color and headline, and feels "This is mine").
+Give the product to someone who has never seen it. Don't explain anything. Observe silently.
+
+Can they:
+1. Understand what it is?
+2. Find an experience?
+3. Customize it?
+4. Export it?
+5. Believe they own the code?
+
+If you have to explain anything, that's a UX issue.
+
+---
+
+## Improvement Classification Rule
+
+Every proposed improvement must be classified. This prevents spending a day polishing icons while a confusing onboarding flow remains.
+
+| Category | Example |
+| :--- | :--- |
+| **Critical** | Fix broken export, Fix layout crash |
+| **High** | Homepage copy, Confusing UX, Unclear value prop |
+| **Medium** | Performance optimizations |
+| **Low** | Code cleanup |
+| **Nice to have** | Nice animations, extra icons |

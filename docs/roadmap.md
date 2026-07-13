@@ -2,34 +2,39 @@
 
 We build vertically. We ship early. We refuse to build architecture without an immediate product use case.
 
-## Phase A: Polish
-Before we build anything else, we are dedicating an entire phase purely to refining the existing product.
-- **Typography & Rhythm**: Implementing an intentional 8px spacing rhythm across the entire platform.
-- **Card Quality**: Polishing the `ExperienceCard` until it feels premium, intuitive, and answers every question instantly.
-- **Unforgettable Homepage**: Creating a homepage that communicates extreme clarity without screaming (no flashy particles).
-- **Time to First "Wow"**: Ensuring a user can customize their first template and feel "This is mine" in under 30 seconds.
+## Phase A: Polish (Complete)
+- Typography scale enforced.
+- 8px spacing rhythm strictly enforced.
+- Experience Card perfected.
+- Copy rewritten to be benefit-first.
 
-## Phase B: Expansion
-Once the platform feels premium, we scale the inventory.
-- SaaS
-- Agency
-- Portfolio
-- Restaurant
-- Healthcare
-- AI Startup
+## Phase B: Dogfooding & Product Hardening (1–2 weeks)
+**Goal:** Shift from "Can we build it?" to "Would we happily use this every day?"
+For the next week or two, we will act as the customer daily:
+- Open ZenixUI, customize an experience, export it, open in VS Code, modify it, build it, deploy it.
+- **The Embarrassment Test:** "If I exported this today, would I proudly push it to GitHub or send it to a client?"
+- **Daily Scenarios:**
+  - Day 1: A consulting company
+  - Day 2: An AI startup
+  - Day 3: A restaurant
+  - Day 4: A healthcare clinic
+  - Day 5: A personal portfolio
+- *Rule: If anything feels annoying, do not work around it. Fix ZenixUI.*
 
-*The value of ZenixUI grows exponentially with every high-quality experience.*
+## Phase C: Founder Validation
+Recruit 5–10 real founders before expanding the library.
+- Give them one task: "Build the homepage for your company."
+- Do not explain. Do not guide. Watch.
+- Every time they ask "How do I...", write it down. Their questions become the true roadmap.
 
-## Phase C: Dogfooding
-Build `zenixui.com` using exported ZenixUI code.
-- We will select an experience (likely SaaS or Agency), customize it in the Studio, and export it.
-- We will deploy that exact exported code as our production marketing site.
-- If it feels painful, we fix the product, not the marketing site.
-
-## Phase D: Founder Validation
-Invite 10 real founders to use the product.
-- We will not ask "Do you like it?"
-- We will ask: "Can you launch your landing page today?"
+## Phase D: Expansion
+Only after rigorous dogfooding and founder validation will we expand the inventory. We will prioritize by widest commercial appeal:
+1. SaaS Startup
+2. Agency
+3. Portfolio
+4. AI Startup
+5. Restaurant
+6. Healthcare
 
 ---
 > *We will NOT build: AI generation, user authentication, databases, dashboards, payments, or community uploads until this core roadmap is complete and validated.*
