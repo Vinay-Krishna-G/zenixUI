@@ -13,9 +13,12 @@ export function Hero() {
         <h1 className="text-5xl sm:text-6xl font-extrabold text-text-heading font-heading tracking-tight mb-6 leading-[1.1]">
           Launch-ready frontends.
         </h1>
-        <p className="text-xl text-text-body mb-12 max-w-2xl mx-auto leading-relaxed">
+        <p className="text-xl text-text-body mb-6 max-w-2xl mx-auto leading-relaxed">
           Customize visually.<br />
           Own the code.
+        </p>
+        <p className="text-sm font-medium text-brand-primary/80 mb-12 max-w-xl mx-auto">
+          Exports a standard Next.js project. Best for developers, technical founders, and teams that want to own their code.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

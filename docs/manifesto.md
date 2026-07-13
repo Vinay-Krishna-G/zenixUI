@@ -147,6 +147,9 @@ If you have to explain anything, that's a UX issue.
 
 ## Improvement Classification Rule
 
+**Every dogfooding session must uncover at least one improvement.**
+If a session ends with "Everything looks good", then the persona wasn't realistic, the task wasn't challenging enough, or the review wasn't critical enough. There is almost always some friction to uncover.
+
 **Fix the highest-frequency annoyance before the biggest feature request.**
 If three users hesitate at the same button, fixing that is probably worth more than adding an entirely new capability.
 
