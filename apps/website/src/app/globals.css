@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-brand-primary: var(--brand-primary);
+  --color-brand-secondary: var(--brand-secondary);
+  --color-brand-foreground: var(--brand-foreground);
+  
+  --color-surface-bg: var(--surface-bg);
+  --color-surface-card: var(--surface-card);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-surface-border: var(--surface-border);
+  
+  --color-text-heading: var(--text-heading);
+  --color-text-body: var(--text-body);
+  --color-text-muted: var(--text-muted);
+  --color-text-on-brand: var(--text-on-brand);
+  
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
+  
+  --radius-control: var(--radius-control);
+  --radius-card: var(--radius-card);
+}
+
+:root {
+  /* Brand */
+  --brand-primary:       #6366f1;
+  --brand-secondary:     #8b5cf6;
+  --brand-foreground:    #ffffff;
+
+  /* Surfaces */
+  --surface-bg:          #0a0a0a;
+  --surface-card:        #111111;
+  --surface-elevated:    #1a1a1a;
+  --surface-border:      #222222;
+
+  /* Text */
+  --text-heading:        #ffffff;
+  --text-body:           #a1a1aa;
+  --text-muted:          #52525b;
+  --text-on-brand:       #ffffff;
+
+  /* Typography */
+  --font-heading:        'Inter', sans-serif;
+  --font-body:           'Inter', sans-serif;
+
+  /* Active radius — Studio updates these two */
+  --radius-control: 12px;
+  --radius-card:    20px;
+}
+
+html {
+  -webkit-font-smoothing:  antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior:         smooth;
+}
+
+body {
+  background-color: var(--surface-bg);
+  color:            var(--text-body);
+  font-family:      var(--font-body);
+}
+
+/* Custom Scrollbar for Studio / Export */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--surface-bg); }
+::-webkit-scrollbar-thumb {
+  background:    var(--surface-border);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
