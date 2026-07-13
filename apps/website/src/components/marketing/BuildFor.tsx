@@ -27,9 +27,9 @@ export function BuildFor() {
             {CATEGORIES.map(cat => (
               <button
                 key={cat}
-                onClick={() => setActiveCategory(cat === "Startup" || cat === "Agency" ? "Business" : cat)}
+                onClick={() => setActiveCategory(cat)}
                 className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-200 border ${
-                  activeCategory === (cat === "Startup" || cat === "Agency" ? "Business" : cat)
+                  activeCategory === cat
                     ? "bg-brand-primary text-brand-foreground border-brand-primary shadow-[0_0_16px_rgba(99,102,241,0.3)]"
                     : "bg-surface-card text-text-muted border-surface-border hover:text-text-heading hover:border-text-muted"
                 }`}
@@ -40,7 +40,7 @@ export function BuildFor() {
           </div>
         </header>
 
-        <ExperienceGrid category={activeCategory} />
+        <ExperienceGrid category={activeCategory === "Startup" || activeCategory === "Agency" ? "Business" : activeCategory} />
       </div>
     </section>
   )

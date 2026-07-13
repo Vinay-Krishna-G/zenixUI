@@ -8,9 +8,9 @@ interface ExperienceGridProps {
 export function ExperienceGrid({ category }: ExperienceGridProps) {
   // Filter experiences by category (if applicable)
   const filtered = experiences.filter(e => 
-    e.manifest.category.toLowerCase() === category.toLowerCase() || 
     category === "All" ||
-    (category === "Business" && e.manifest.tags.includes("business"))
+    e.manifest.category.toLowerCase() === category.toLowerCase() || 
+    e.manifest.tags.some(tag => tag.toLowerCase() === category.toLowerCase())
   )
 
   return (

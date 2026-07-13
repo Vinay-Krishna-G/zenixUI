@@ -47,31 +47,51 @@ export function Studio({ entry }: StudioProps) {
     }))
   }
 
+  const [isExporting, setIsExporting] = useState(false)
+  const [isExported, setIsExported] = useState(false)
+
   const handleExport = async () => {
     try {
+      setIsExporting(true)
       const files = assembleProject(entry, config)
       await downloadAsZip(files, entry.manifest.id)
+      
+      setIsExported(true)
+      setTimeout(() => setIsExported(false), 2000)
     } catch (e) {
       console.error("Export failed", e)
       alert("Failed to export project. Check console for details.")
+    } finally {
+      setIsExporting(false)
     }
   }
 
   // The CSS custom properties mapping
   const cssVars = {
     "--brand-primary":       config.theme.primaryColor,
+    "--color-brand-primary": config.theme.primaryColor,
     "--brand-secondary":     config.theme.secondaryColor,
+    "--color-brand-secondary": config.theme.secondaryColor,
     "--brand-foreground":    "#ffffff",
+    "--color-brand-foreground": "#ffffff",
     "--surface-bg":          config.theme.backgroundColor,
+    "--color-surface-bg":    config.theme.backgroundColor,
     "--surface-card":        config.theme.cardColor,
+    "--color-surface-card":  config.theme.cardColor,
     "--surface-elevated":    "#1a1a1a",
+    "--color-surface-elevated": "#1a1a1a",
     "--surface-border":      config.theme.borderColor,
+    "--color-surface-border": config.theme.borderColor,
     "--text-heading":        config.theme.headingColor,
+    "--color-text-heading":  config.theme.headingColor,
     "--text-body":           config.theme.bodyColor,
+    "--color-text-body":     config.theme.bodyColor,
     "--text-muted":          config.theme.mutedColor,
+    "--color-text-muted":    config.theme.mutedColor,
     "--text-on-brand":       "#ffffff",
-    "--font-heading":        config.theme.headingFont,
-    "--font-body":           config.theme.bodyFont,
+    "--color-text-on-brand": "#ffffff",
+    "--font-heading":        `'${config.theme.headingFont}', sans-serif`,
+    "--font-body":           `'${config.theme.bodyFont}', sans-serif`,
     "--radius-control":      config.theme.radius === "none" ? "0px" : config.theme.radius === "sm" ? "6px" : config.theme.radius === "md" ? "12px" : config.theme.radius === "lg" ? "20px" : "9999px",
     "--radius-card":         config.theme.radius === "none" ? "0px" : config.theme.radius === "sm" ? "12px" : config.theme.radius === "md" ? "20px" : config.theme.radius === "lg" ? "24px" : "32px",
   } as React.CSSProperties
@@ -84,9 +104,14 @@ export function Studio({ entry }: StudioProps) {
           <h1 className="font-semibold text-sm">Studio</h1>
           <button 
             onClick={handleExport}
-            className="text-xs bg-indigo-500 hover:bg-indigo-600 text-white px-3 py-1.5 rounded transition-colors font-medium cursor-pointer"
+            disabled={isExporting || isExported}
+            className={`text-xs px-3 py-1.5 rounded transition-colors font-medium cursor-pointer ${
+              isExported 
+                ? "bg-green-500 text-white" 
+                : "bg-indigo-500 hover:bg-indigo-600 disabled:opacity-50 disabled:cursor-not-allowed text-white"
+            }`}
           >
-            Export
+            {isExporting ? "Exporting..." : isExported ? "✓ Exported" : "Export"}
           </button>
         </div>
 

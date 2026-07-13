@@ -147,6 +147,9 @@ If you have to explain anything, that's a UX issue.
 
 ## Improvement Classification Rule
 
+**Fix the highest-frequency annoyance before the biggest feature request.**
+If three users hesitate at the same button, fixing that is probably worth more than adding an entirely new capability.
+
 Every proposed improvement must be classified. This prevents spending a day polishing icons while a confusing onboarding flow remains.
 
 | Category | Example |
