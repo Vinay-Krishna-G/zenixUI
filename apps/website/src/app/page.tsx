@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/marketing/Navbar"
 import { Hero } from "@/components/marketing/Hero"
 import { BuildFor } from "@/components/marketing/BuildFor"
+import { OwnershipDemo } from "@/components/marketing/OwnershipDemo"
 import { Why } from "@/components/marketing/Why"
 import { HowItWorks } from "@/components/marketing/HowItWorks"
 import { FAQ } from "@/components/marketing/FAQ"
@@ -12,6 +13,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <BuildFor />
+      <OwnershipDemo />
       <Why />
       <HowItWorks />
       <FAQ />
