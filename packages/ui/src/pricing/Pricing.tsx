@@ -9,10 +9,10 @@ export function Pricing({ content }: PricingProps) {
     <section className="py-24 sm:py-32 bg-surface-bg" id="pricing">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <header className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-text-heading max-w-2xl mx-auto mb-4 font-heading">
+          <h2 className="text-3xl sm:text-4xl font-bold text-text-heading max-w-2xl mx-auto mb-4 tracking-tight font-heading">
             {content.headline}
           </h2>
-          <p className="text-lg text-text-body max-w-xl mx-auto">
+          <p className="text-lg text-text-body leading-relaxed max-w-2xl mx-auto">
             {content.subheadline}
           </p>
         </header>
@@ -35,20 +35,20 @@ export function Pricing({ content }: PricingProps) {
                   </div>
                 )}
                 <div className="mb-8">
-                  <h3 className="text-xl font-semibold text-text-heading mb-2">{plan.name}</h3>
+                  <h3 className="text-lg font-semibold text-text-heading mb-2">{plan.name}</h3>
                   <div className="flex items-baseline gap-1 text-text-heading mb-4">
                     <span className="text-4xl font-extrabold tracking-tight">{plan.price}</span>
                     {plan.price !== "Custom" && <span className="text-sm font-medium text-text-muted">/mo</span>}
                   </div>
-                  <p className="text-sm text-text-body leading-relaxed min-h-[40px]">
+                  <p className="text-base text-text-body leading-relaxed min-h-[48px]">
                     {plan.description}
                   </p>
                 </div>
 
-                <ul className="flex flex-col gap-3 flex-1 mb-8">
+                <ul className="flex flex-col gap-4 flex-1 mb-8">
                   {plan.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-start gap-3 text-sm text-text-body leading-tight">
-                      <span className="text-brand-primary shrink-0">✓</span>
+                    <li key={idx} className="flex items-start gap-3 text-base text-text-body leading-relaxed">
+                      <span className="text-brand-primary shrink-0 mt-0.5">✓</span>
                       {feature}
                     </li>
                   ))}

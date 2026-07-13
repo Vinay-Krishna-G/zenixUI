@@ -14,10 +14,10 @@ export function Stats({ content }: StatsProps) {
         >
           {content.items.map((item, i) => (
             <li key={i} className="flex flex-col gap-2 pt-12 sm:pt-0 sm:px-6 first:pt-0">
-              <span className="text-4xl sm:text-5xl font-extrabold text-brand-primary tracking-tight font-heading">
+              <span className="text-5xl font-extrabold text-brand-primary tracking-tight font-heading">
                 {item.value}
               </span>
-              <span className="text-base font-semibold text-text-heading uppercase tracking-wide">
+              <span className="text-sm font-semibold text-text-heading uppercase tracking-wide">
                 {item.label}
               </span>
             </li>

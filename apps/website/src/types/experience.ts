@@ -70,6 +70,7 @@ export interface ExperienceManifest {
   description: string
   category:    ExperienceCategory
   tags:        string[]
+  difficulty:  "Beginner" | "Intermediate" | "Advanced"
   sections:    string[]
   preview:     string
 }

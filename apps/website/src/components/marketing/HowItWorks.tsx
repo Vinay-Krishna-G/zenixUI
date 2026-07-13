@@ -3,25 +3,25 @@ export function HowItWorks() {
     {
       number: "01",
       title: "Choose",
-      description: "Browse our library of premium, conversion-optimized experiences tailored to your industry."
+      description: "Select a launch-ready frontend built specifically for your industry."
     },
     {
       number: "02",
       title: "Customize",
-      description: "Use the Studio to visually tweak colors, fonts, shapes, and copy until it perfectly matches your brand."
+      description: "Configure colors, typography, and copy visually. See your brand come alive in seconds."
     },
     {
       number: "03",
       title: "Own",
-      description: "Click export. Receive a zip file containing a clean, production-ready Next.js + Tailwind v4 project."
+      description: "Export a standalone Next.js project. No proprietary dependencies, just clean code you own forever."
     }
   ]
 
   return (
     <section className="py-24 bg-surface-card border-t border-surface-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <header className="text-center mb-20">
-          <h2 className="text-3xl font-bold text-text-heading font-heading">
+        <header className="text-center mb-24">
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-text-heading font-heading">
             How it works
           </h2>
         </header>
@@ -35,7 +35,7 @@ export function HowItWorks() {
               <div className="w-12 h-12 rounded-full bg-surface-elevated border border-brand-primary/30 flex items-center justify-center text-brand-primary font-bold mb-6 z-10 shadow-[0_0_16px_rgba(99,102,241,0.15)]">
                 {step.number}
               </div>
-              <h3 className="text-xl font-bold text-text-heading mb-3">{step.title}</h3>
+              <h3 className="text-lg font-semibold text-text-heading mb-3">{step.title}</h3>
               <p className="text-base text-text-body leading-relaxed max-w-xs">{step.description}</p>
             </div>
           ))}

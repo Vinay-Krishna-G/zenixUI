@@ -10,10 +10,10 @@ export function Hero() {
       />
       
       <div className="relative z-10 max-w-4xl px-4 sm:px-6">
-        <h1 className="text-5xl sm:text-7xl font-extrabold text-text-heading font-heading tracking-tight mb-8 leading-[1.1]">
+        <h1 className="text-5xl sm:text-6xl font-extrabold text-text-heading font-heading tracking-tight mb-6 leading-[1.1]">
           Launch-ready frontends.
         </h1>
-        <p className="text-xl sm:text-2xl text-text-body mb-12 max-w-2xl mx-auto leading-relaxed">
+        <p className="text-xl text-text-body mb-12 max-w-2xl mx-auto leading-relaxed">
           Customize visually.<br />
           Own the code.
         </p>

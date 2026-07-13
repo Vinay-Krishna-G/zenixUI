@@ -15,7 +15,7 @@ export function FAQ() {
     <section className="py-24 bg-surface-bg border-t border-surface-border">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <header className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-text-heading font-heading">
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-text-heading font-heading">
             Frequently Asked Questions
           </h2>
         </header>
@@ -32,7 +32,7 @@ export function FAQ() {
                   className="w-full flex items-center justify-between p-6 text-left cursor-pointer focus:outline-none"
                   onClick={() => setOpenIndex(isOpen ? null : i)}
                 >
-                  <span className={`text-base font-medium transition-colors ${isOpen ? "text-brand-primary" : "text-text-heading"}`}>
+                  <span className={`text-lg font-semibold transition-colors ${isOpen ? "text-brand-primary" : "text-text-heading"}`}>
                     {item.question}
                   </span>
                   <span className={`text-text-muted transition-transform duration-200 ${isOpen ? "rotate-45" : ""}`}>
@@ -42,7 +42,7 @@ export function FAQ() {
                 <div 
                   className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}`}
                 >
-                  <div className="px-6 pb-6 pt-0 text-text-body text-sm leading-relaxed">
+                  <div className="px-6 pb-6 pt-0 text-text-body text-base leading-relaxed">
                     {item.answer}
                   </div>
                 </div>

@@ -4,10 +4,10 @@ export function Footer() {
   return (
     <footer className="py-16 bg-surface-card border-t border-surface-border text-center">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
-        <h2 className="text-2xl font-bold text-text-heading font-heading tracking-tight mb-2">
+        <h2 className="text-xl font-bold text-text-heading font-heading tracking-tight mb-2">
           ZenixUI
         </h2>
-        <p className="text-lg text-text-body font-medium mb-12">
+        <p className="text-base text-text-body leading-relaxed mb-12">
           Choose. Customize. Own the code.
         </p>
 

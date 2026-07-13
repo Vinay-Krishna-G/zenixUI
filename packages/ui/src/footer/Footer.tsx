@@ -11,17 +11,17 @@ export function Footer({ content }: FooterProps) {
         
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-16">
           <div className="col-span-2 lg:col-span-2">
-            <a href="/" className="inline-block text-xl font-bold tracking-tight text-text-heading mb-4 hover:opacity-80 transition-opacity">
+            <a href="/" className="inline-block text-xl font-bold tracking-tight text-text-heading mb-4 hover:opacity-80 transition-opacity font-heading">
               {content.brandName}
             </a>
-            <p className="text-sm text-text-body max-w-xs leading-relaxed">
+            <p className="text-base text-text-body max-w-xs leading-relaxed">
               {content.brandTagline}
             </p>
           </div>
           
           {content.links.map((group, i) => (
             <div key={i}>
-              <h3 className="text-sm font-semibold text-text-heading uppercase tracking-wider mb-4">
+              <h3 className="text-xs font-semibold text-text-heading uppercase tracking-wider mb-4">
                 {group.title}
               </h3>
               <ul className="flex flex-col gap-3">
@@ -29,7 +29,7 @@ export function Footer({ content }: FooterProps) {
                   <li key={j}>
                     <a 
                       href={link.href} 
-                      className="text-sm text-text-body hover:text-brand-primary transition-colors"
+                      className="text-sm text-text-muted hover:text-brand-primary transition-colors"
                     >
                       {link.label}
                     </a>

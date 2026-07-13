@@ -4,7 +4,7 @@ export function Why() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-text-heading font-heading tracking-tight mb-6">
+            <h2 className="text-3xl sm:text-4xl font-bold text-text-heading font-heading tracking-tight mb-6">
               Own your code.
             </h2>
             <div className="space-y-6 text-lg text-text-body leading-relaxed">
@@ -17,15 +17,15 @@ export function Why() {
               <ul className="space-y-4 mt-8">
                 <li className="flex items-start gap-3">
                   <span className="text-brand-primary mt-1">✓</span>
-                  <span><strong>No proprietary runtime.</strong> It's just React.</span>
+                  <span><strong>Zero lock-in.</strong> You host the final React code.</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-brand-primary mt-1">✓</span>
-                  <span><strong>No vendor lock-in.</strong> Host it anywhere.</span>
+                  <span><strong>Extensible by design.</strong> Add databases, auth, and logic instantly.</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-brand-primary mt-1">✓</span>
-                  <span><strong>Clean Next.js project.</strong> Tailored to your exact content.</span>
+                  <span><strong>Production-quality sections.</strong> Hand-written quality, ready for scale.</span>
                 </li>
               </ul>
             </div>

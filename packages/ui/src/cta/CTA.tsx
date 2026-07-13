@@ -14,11 +14,14 @@ export function CTA({ content }: CTAProps) {
       />
 
       <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
-        <h2 className="text-3xl sm:text-5xl font-extrabold text-text-heading mb-6 tracking-tight font-heading">
+        <h2 className="text-3xl sm:text-4xl font-bold text-text-heading mb-6 tracking-tight font-heading">
           {content.headline}
         </h2>
-
         
+        <p className="text-lg text-text-body mb-12 max-w-2xl mx-auto leading-relaxed">
+          {content.subheadline}
+        </p>
+
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <a 
             href={content.primaryCta.href} 

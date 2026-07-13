@@ -97,6 +97,7 @@ When a decision is unclear, apply these ten principles in order.
 9. **Every feature must have a customer** — founders, freelancers, agencies, or developers — name them
 10. **Ship before expanding** — one vertical slice done beautifully beats five slices done adequately
 11. **Opinionated by Default** — expose the 20% of controls that create 80% of the value. Do not recreate a website builder.
+12. **Quality over Quantity** — one exceptional experience beats ten average ones. One exceptional interaction beats twenty animations.
 
 ---
 
