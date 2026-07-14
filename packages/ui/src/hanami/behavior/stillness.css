@@ -1,0 +1,30 @@
+/* Hanami Stillness System */
+
+/* 
+ * The Stillness primitive is the deliberate absence of reaction.
+ * By explicitly declaring an element as 'still', we prevent inherited
+ * active-contexts or focus-groups from unintentionally causing it to move or fade.
+ * This creates a foundation of confidence. 
+ */
+
+.stillness-anchor {
+  /* Enforces that this element and its descendants remain unaffected by atmospheric noise */
+  transition: none !important;
+  transform: none !important;
+  opacity: 1 !important;
+  filter: none !important;
+}
+
+/* For specific text that should never shift when surrounding containers breathe */
+.stillness-text {
+  transition: none !important;
+  letter-spacing: normal !important;
+  line-height: inherit !important;
+}
+
+/* Backgrounds that ground the experience */
+.stillness-bg {
+  background-attachment: fixed; /* Optional physical grounding */
+  transition: none !important;
+  opacity: 1 !important;
+}

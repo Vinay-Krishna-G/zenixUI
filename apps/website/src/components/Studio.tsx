@@ -10,6 +10,16 @@ interface StudioProps {
   id: string
 }
 
+function getContrastColor(hexColor: string) {
+  const hex = hexColor.replace('#', '');
+  if (hex.length !== 6) return '#ffffff'; // Fallback
+  const r = parseInt(hex.substring(0, 2), 16);
+  const g = parseInt(hex.substring(2, 4), 16);
+  const b = parseInt(hex.substring(4, 6), 16);
+  const yiq = (r * 299 + g * 587 + b * 114) / 1000;
+  return yiq >= 128 ? '#000000' : '#ffffff';
+}
+
 export function Studio({ id }: StudioProps) {
   const entry = experiences.find(e => e.manifest.id === id)
   
@@ -72,14 +82,13 @@ export function Studio({ id }: StudioProps) {
     }
   }
 
-  // The CSS custom properties mapping
   const cssVars = {
     "--brand-primary":       config.theme.primaryColor,
     "--color-brand-primary": config.theme.primaryColor,
     "--brand-secondary":     config.theme.secondaryColor,
     "--color-brand-secondary": config.theme.secondaryColor,
-    "--brand-foreground":    "#ffffff",
-    "--color-brand-foreground": "#ffffff",
+    "--brand-foreground":    getContrastColor(config.theme.primaryColor),
+    "--color-brand-foreground": getContrastColor(config.theme.primaryColor),
     "--surface-bg":          config.theme.backgroundColor,
     "--color-surface-bg":    config.theme.backgroundColor,
     "--surface-card":        config.theme.cardColor,
@@ -94,8 +103,8 @@ export function Studio({ id }: StudioProps) {
     "--color-text-body":     config.theme.bodyColor,
     "--text-muted":          config.theme.mutedColor,
     "--color-text-muted":    config.theme.mutedColor,
-    "--text-on-brand":       "#ffffff",
-    "--color-text-on-brand": "#ffffff",
+    "--text-on-brand":       getContrastColor(config.theme.primaryColor),
+    "--color-text-on-brand": getContrastColor(config.theme.primaryColor),
     "--font-heading":        `'${config.theme.headingFont}', sans-serif`,
     "--font-body":           `'${config.theme.bodyFont}', sans-serif`,
     "--radius-control":      config.theme.radius === "none" ? "0px" : config.theme.radius === "sm" ? "6px" : config.theme.radius === "md" ? "12px" : config.theme.radius === "lg" ? "20px" : "9999px",

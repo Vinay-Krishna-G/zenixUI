@@ -1,0 +1,36 @@
+/* Hanami Breathing Space System */
+
+.space-responsive {
+  /* Default states (can be overridden by inline styles or specific utility classes) */
+  --space-padding: 32px;
+  --space-gap: 16px;
+  --space-opacity: 0.95;
+  --space-line-height: 1.6;
+  --space-radius: var(--radius-card, 16px);
+  --space-elevation: 0px;
+
+  padding: var(--space-padding);
+  gap: var(--space-gap);
+  opacity: var(--space-opacity);
+  line-height: var(--space-line-height);
+  border-radius: var(--space-radius);
+  transform: translateY(var(--space-elevation));
+  
+  transition-property: padding, gap, opacity, line-height, border-radius, transform;
+  transition-duration: var(--duration-layout);
+  transition-timing-function: var(--ease-welcome);
+}
+
+/* When the space is acknowledged by presence */
+.space-responsive:hover,
+.space-responsive:focus-within,
+.active-context .space-responsive,
+.presence-active {
+  /* The primitive expands slightly, simulating making room */
+  --space-padding: 36px;
+  --space-gap: 20px;
+  --space-opacity: 1;
+  --space-line-height: 1.65;
+  /* Elevation gently lifts without a harsh shadow */
+  --space-elevation: -2px;
+}

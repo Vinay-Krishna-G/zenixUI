@@ -1,0 +1,27 @@
+/* Hanami Welcome Timing */
+:root {
+  /* Easing curves */
+  --ease-welcome: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-rest: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Durations */
+  --duration-interaction: 200ms; /* 180-220ms */
+  --duration-layout: 500ms;      /* 400-600ms */
+  --duration-atmosphere: 1500ms; /* 1000-2000ms */
+}
+
+/* Base utility classes for timing */
+.timing-interaction {
+  transition-duration: var(--duration-interaction);
+  transition-timing-function: var(--ease-welcome);
+}
+
+.timing-layout {
+  transition-duration: var(--duration-layout);
+  transition-timing-function: var(--ease-welcome);
+}
+
+.timing-atmosphere {
+  transition-duration: var(--duration-atmosphere);
+  transition-timing-function: var(--ease-welcome);
+}

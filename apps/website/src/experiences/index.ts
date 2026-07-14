@@ -1,6 +1,7 @@
 import type { Experience } from "@/types/experience"
 import { businessLanding } from "./business-landing"
 import { aurora } from "./aurora"
+import { hanami } from "./hanami"
 
 // ─── Registry ────────────────────────────────────────────────────────────────
 // Add new experiences here as they are built.
@@ -8,5 +9,6 @@ import { aurora } from "./aurora"
 
 export const experiences: Experience[] = [
   aurora,
+  hanami,
   businessLanding,
 ]

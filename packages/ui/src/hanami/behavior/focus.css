@@ -1,0 +1,31 @@
+/* Hanami Focus System */
+
+/* The container that manages focus across its children */
+.focus-group {
+  /* We use the group state to trigger focus changes */
+}
+
+/* Individual items within a focus group */
+.focus-item {
+  transition: opacity var(--duration-atmosphere) var(--ease-welcome),
+              filter var(--duration-atmosphere) var(--ease-welcome);
+  will-change: opacity, filter;
+}
+
+/* When the group is active, reduce noise for ALL items by default */
+.focus-group.active-context .focus-item,
+.focus-group:hover .focus-item,
+.focus-group:focus-within .focus-item {
+  opacity: 0.6;
+  filter: saturate(0.9);
+}
+
+/* Restore the specific item that has presence/focus to full clarity */
+.focus-group.active-context .focus-item.active-item,
+.focus-group .focus-item:hover,
+.focus-group .focus-item:focus-visible,
+.focus-group .focus-item.active-item {
+  opacity: 1;
+  filter: saturate(1);
+  transition-duration: var(--duration-layout); /* Regains clarity faster than it loses it */
+}

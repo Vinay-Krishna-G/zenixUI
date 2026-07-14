@@ -20,5 +20,8 @@ export { AuroraExplore } from "./aurora/AuroraExplore"
 export { AuroraMakeItYours } from "./aurora/AuroraMakeItYours"
 export { AuroraSocialProof } from "./aurora/AuroraSocialProof"
 
+// Hanami sections
+export * from "./hanami/components"
+
 // Types
 export * from "./types"

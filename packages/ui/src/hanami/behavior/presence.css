@@ -1,0 +1,27 @@
+/* Hanami Presence System */
+
+.presence-surface {
+  position: relative;
+}
+
+/* Warmth overlay */
+.presence-surface::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: #fcd34d; /* Warm amber */
+  opacity: 0;
+  border-radius: inherit;
+  transition: opacity var(--duration-atmosphere) var(--ease-welcome);
+  pointer-events: none;
+  z-index: 0; /* Behind content but above background */
+}
+
+/* When the element itself or its active context is present */
+.presence-surface:hover::after,
+.presence-surface:focus-visible::after,
+.active-context .presence-surface::after,
+.presence-active::after {
+  opacity: 0.03; /* 3% warmth */
+  transition-duration: var(--duration-layout); /* Enters faster than it leaves */
+}
