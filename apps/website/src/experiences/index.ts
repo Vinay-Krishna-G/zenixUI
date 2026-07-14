@@ -1,14 +1,12 @@
-import type { ExperienceEntry } from "@/types/experience"
-import { manifest }       from "./business-landing/manifest"
-import { defaultTheme }   from "./business-landing/theme"
-import { defaultContent } from "./business-landing/content"
-
-const businessLanding: ExperienceEntry = { manifest, defaultTheme, defaultContent }
+import type { Experience } from "@/types/experience"
+import { businessLanding } from "./business-landing"
+import { aurora } from "./aurora"
 
 // ─── Registry ────────────────────────────────────────────────────────────────
 // Add new experiences here as they are built.
 // Order determines display order in the Experience Library.
 
-export const experiences: ExperienceEntry[] = [
+export const experiences: Experience[] = [
+  aurora,
   businessLanding,
 ]

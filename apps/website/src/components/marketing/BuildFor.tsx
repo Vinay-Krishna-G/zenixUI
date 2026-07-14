@@ -4,16 +4,15 @@ import { useState } from "react"
 import { ExperienceGrid } from "./ExperienceGrid"
 
 const CATEGORIES = [
+  "All",
   "Startup",
-  "SaaS",
+  "Business",
   "Agency",
-  "Portfolio",
-  "Restaurant",
-  "Healthcare"
+  "Portfolio"
 ]
 
 export function BuildFor() {
-  const [activeCategory, setActiveCategory] = useState<string>("Business") // We only have Business right now, but pretend it's Startup/SaaS mapped
+  const [activeCategory, setActiveCategory] = useState<string>("All")
 
   return (
     <section className="py-24 border-t border-surface-border bg-surface-bg" id="build-for">
@@ -40,7 +39,7 @@ export function BuildFor() {
           </div>
         </header>
 
-        <ExperienceGrid category={activeCategory === "Startup" || activeCategory === "Agency" ? "Business" : activeCategory} />
+        <ExperienceGrid category={activeCategory} />
       </div>
     </section>
   )

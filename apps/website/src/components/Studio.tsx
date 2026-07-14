@@ -1,25 +1,29 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import type { ExperienceConfig, ExperienceEntry } from "@/types/experience"
-import { Hero } from "@zenix/ui"
+import type { ExperienceConfig, Experience } from "@/types/experience"
 import { assembleProject } from "@/lib/export/assembler"
 import { downloadAsZip } from "@/lib/export/zip"
+import { experiences } from "@/experiences"
 
 interface StudioProps {
-  entry: ExperienceEntry
+  id: string
 }
 
-export function Studio({ entry }: StudioProps) {
+export function Studio({ id }: StudioProps) {
+  const entry = experiences.find(e => e.manifest.id === id)
+  
   // 1. Initialize state
   const [config, setConfig] = useState<ExperienceConfig>(() => {
-    return { theme: entry.defaultTheme, content: entry.defaultContent }
+    if (!entry) return { theme: {} as any, content: {} as any }
+    return { theme: entry.theme, content: entry.content }
   })
   
   const [activeTab, setActiveTab] = useState<"appearance" | "content">("appearance")
 
   // 2. Load from localStorage on mount
   useEffect(() => {
+    if (!entry) return
     const saved = localStorage.getItem(`zenix_config_${entry.manifest.id}`)
     if (saved) {
       try {
@@ -28,12 +32,13 @@ export function Studio({ entry }: StudioProps) {
         console.error("Failed to parse saved config", e)
       }
     }
-  }, [entry.manifest.id])
+  }, [entry?.manifest.id])
 
   // 3. Save to localStorage on change
   useEffect(() => {
+    if (!entry) return
     localStorage.setItem(`zenix_config_${entry.manifest.id}`, JSON.stringify(config))
-  }, [config, entry.manifest.id])
+  }, [config, entry?.manifest.id])
 
   // Handlers for updating config
   const updateTheme = (key: keyof ExperienceConfig["theme"], value: string) => {
@@ -51,6 +56,7 @@ export function Studio({ entry }: StudioProps) {
   const [isExported, setIsExported] = useState(false)
 
   const handleExport = async () => {
+    if (!entry) return
     try {
       setIsExporting(true)
       const files = assembleProject(entry, config)
@@ -95,6 +101,10 @@ export function Studio({ entry }: StudioProps) {
     "--radius-control":      config.theme.radius === "none" ? "0px" : config.theme.radius === "sm" ? "6px" : config.theme.radius === "md" ? "12px" : config.theme.radius === "lg" ? "20px" : "9999px",
     "--radius-card":         config.theme.radius === "none" ? "0px" : config.theme.radius === "sm" ? "12px" : config.theme.radius === "md" ? "20px" : config.theme.radius === "lg" ? "24px" : "32px",
   } as React.CSSProperties
+
+  if (!entry) {
+    return <div>Experience not found</div>
+  }
 
   return (
     <div className="flex h-screen bg-[#0f0f0f] text-white overflow-hidden font-sans">
@@ -200,7 +210,7 @@ export function Studio({ entry }: StudioProps) {
           className="min-h-full w-full transition-colors duration-200" 
           style={cssVars}
         >
-          <Hero content={config.content.hero} />
+          <entry.preview config={config} />
         </div>
       </main>
     </div>

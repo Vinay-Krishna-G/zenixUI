@@ -66,19 +66,34 @@ The customer never thinks about components, registries, tokens, or render trees.
 
 ---
 
-## What We Refuse to Build (In v1)
+## Things We Refused To Build (Convictions)
 
-Every idea that does not serve the core loop above is refused until v1 ships.
+Not because we couldn't. Because we chose not to.
+Every company accumulates features. Few accumulate convictions.
 
-- No CLI
-- No AI generation
-- No drag-and-drop layout builder
-- No user accounts
-- No cloud storage
-- No marketplace for third-party templates
-- No plugin system
-- No proprietary runtime in exported projects
-- No more than two packages in the monorepo
+- **Proprietary runtime:** We export standard React/Next.js.
+- **Vendor lock-in:** No `@zenix/*` packages in the export.
+- **Plugin marketplace:** Unless overwhelming evidence justifies it.
+- **WYSIWYG editor:** We configure experiences; we do not build canvases.
+- **Low-code builder:** We are a starting point for code owners.
+- **CMS:** We provide structured content files (`content/home.ts`).
+- **Hosted-only features:** The code works anywhere.
+
+---
+
+## The Roadmap
+
+### Phase C — Founder Validation
+**Week 1 — Observe:** Run silent usability sessions with 3-5 React developers. No coding. Output: Evidence.
+**Week 2 — Synthesize:** Prioritize findings by frequency × impact. What surprised us? What delighted people? Output: Decisions.
+**Week 3 — Build:** Every commit must reference evidence (e.g., "Fix: 4/5 testers couldn't discover X"). The Git history becomes a history of learning.
+
+### Phase D — Conviction
+After validation, we explicitly define:
+> *This is what we are.*
+> *This is what we are not.*
+
+These two sentences become the unshakeable foundation for all future growth.
 
 ---
 
@@ -149,6 +164,28 @@ If you have to explain anything, that's a UX issue.
 
 **Every dogfooding session must uncover at least one improvement.**
 If a session ends with "Everything looks good", then the persona wasn't realistic, the task wasn't challenging enough, or the review wasn't critical enough. There is almost always some friction to uncover.
+
+**Never optimize for hypothetical users over observed users.**
+If five React developers all hesitate at the same interaction, that matters. If one imaginary marketing persona wants a feature, it doesn't. Observed users win. Always.
+
+**The product roadmap should emerge from reality, not imagination.**
+After every human dogfooding session, force yourself to answer only three questions before discussing solutions:
+1. What surprised us?
+2. What assumption was proven wrong?
+3. What assumption became stronger?
+
+**Don't rescue the user.**
+During testing: don't explain, don't hint, don't point, don't apologize. Silence is data. Every time you rescue them, you destroy evidence.
+
+**Test the product, not the person.**
+Read this before every session: *Today we are testing the product. We are not testing the person. If something is confusing, that is our fault, not theirs. We will not explain. We will not defend. We will observe.*
+
+**Evidence Freeze before Phase changes.**
+Never build immediately after one interview. Enter an Evidence Freeze where no new features or redesigns are allowed until 3-5 human observations are collected and analyzed together. The roadmap changes based on patterns, not anecdotes.
+
+**Products are built by engineers. Great products are shaped by users. Exceptional products are created by teams disciplined enough to tell the difference.**
+
+**When evidence and intuition disagree, thank your intuition for getting you this far—then let evidence lead the next step.**
 
 **Fix the highest-frequency annoyance before the biggest feature request.**
 If three users hesitate at the same button, fixing that is probably worth more than adding an entirely new capability.

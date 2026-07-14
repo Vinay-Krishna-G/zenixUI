@@ -82,10 +82,29 @@ export interface ExperienceConfig {
   content: ExperienceContent
 }
 
-// ─── Registry Entry ──────────────────────────────────────────────────────────
+// ─── Experience Capability Interface ──────────────────────────────────────────
 
-export interface ExperienceEntry {
-  manifest:       ExperienceManifest
-  defaultTheme:   ExperienceTheme
-  defaultContent: ExperienceContent
+import type React from "react"
+
+export interface Experience {
+  manifest: ExperienceManifest
+  theme:    ExperienceTheme
+  content:  any
+
+  // Capability: How it renders itself
+  preview: React.ComponentType<{ config: ExperienceConfig }>
+
+  // Capability: How it exposes controls to the Studio
+  studio: {
+    // Future expansion: controls, defaultState
+  }
+
+  // Capability: How it bundles itself into a ZIP
+  exporter: {
+    files: string[] // Paths relative to packages/ui/src
+    generatePage: (config: ExperienceConfig) => string
+    dependencies?: Record<string, string> // e.g. { "lucide-react": "^0.292.0" }
+    // Future expansion: assets, fonts, metadata, seo, post processing
+  }
 }
+

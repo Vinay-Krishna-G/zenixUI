@@ -89,3 +89,59 @@ export interface FooterContent {
   links:        FooterLinkGroup[]
   social:       FooterSocial[]
 }
+
+export interface ProofItem {
+  title: string
+  description: string
+  visual: "folder" | "code" | "checklist"
+  codeSnippet?: string
+}
+
+export interface ProofContent {
+  eyebrow: string
+  headline: string
+  subheadline: string
+  items: ProofItem[]
+}
+
+export interface ExploreItem {
+  title: string
+  category: string
+  status: "Live" | "Coming Soon"
+  href: string
+}
+
+export interface ExploreContent {
+  eyebrow: string
+  headline: string
+  subheadline: string
+  items: ExploreItem[]
+}
+
+export interface MakeItYoursItem {
+  title: string
+  description: string
+  visual: "customize" | "export" | "continue"
+}
+
+export interface MakeItYoursContent {
+  headline: string
+  subheadline: string
+  items: MakeItYoursItem[]
+}
+
+export interface SocialProofQuote {
+  quote: string
+  author: string
+  role: string
+}
+
+export interface SocialProofContent {
+  eyebrow: string
+  headline: string
+  subheadline: string
+  quotes: SocialProofQuote[]
+}
+
+
+

@@ -11,5 +11,14 @@ export { FAQ }      from "./faq/FAQ"
 export { CTA }      from "./cta/CTA"
 export { Footer }   from "./footer/Footer"
 
+// Aurora sections
+export { AuroraHero } from "./aurora/AuroraHero"
+export { AuroraNav }  from "./aurora/AuroraNav"
+export { AuroraCTA }  from "./aurora/AuroraCTA"
+export { AuroraProof } from "./aurora/AuroraProof"
+export { AuroraExplore } from "./aurora/AuroraExplore"
+export { AuroraMakeItYours } from "./aurora/AuroraMakeItYours"
+export { AuroraSocialProof } from "./aurora/AuroraSocialProof"
+
 // Types
 export * from "./types"

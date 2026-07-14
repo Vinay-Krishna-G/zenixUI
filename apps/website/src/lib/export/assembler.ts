@@ -1,9 +1,9 @@
-import type { ExperienceConfig, ExperienceEntry } from "@/types/experience"
+import type { ExperienceConfig, Experience } from "@/types/experience"
 import { RAW_COMPONENTS } from "./raw-components"
 
 export type FileMap = Record<string, string>
 
-export function assembleProject(entry: ExperienceEntry, config: ExperienceConfig): FileMap {
+export function assembleProject(entry: Experience, config: ExperienceConfig): FileMap {
   const files: FileMap = {}
 
   // 1. Core Next.js boilerplate
@@ -20,7 +20,8 @@ export function assembleProject(entry: ExperienceEntry, config: ExperienceConfig
     dependencies: {
       "next": "16.2.10",
       "react": "19.2.4",
-      "react-dom": "19.2.4"
+      "react-dom": "19.2.4",
+      ...(entry.exporter.dependencies || {})
     },
     devDependencies: {
       "@types/node": "^20",
@@ -219,7 +220,7 @@ body {
 `
 
   // 4. Content file
-  files["content/home.ts"] = `export const content = ${JSON.stringify(config.content, null, 2)}`
+  files["content/home.ts"] = `export const content: any = ${JSON.stringify(config.content, null, 2)}`
 
   // 5. Types
   if (RAW_COMPONENTS["types.ts"]) {
@@ -227,53 +228,24 @@ body {
   }
 
   // 6. Copy Sections
-  // Only copy the ones the manifest requires, or for v1, copy what exists
-  // We'll modify the imports from "@zenix/ui" or "../types" to "@/types" or "@/components/X"
-  const includedSections = entry.manifest.sections
-  const sectionImports: string[] = []
-  const sectionElements: string[] = []
-
-  // For v1 Hero-only test, we just include Hero
-  for (const [relativePath, contentStr] of Object.entries(RAW_COMPONENTS)) {
-    // skip non-hero for now, or just include them all
-    const fileName = relativePath.split("/").pop()!
-    const folderName = relativePath.split("/")[0]
-
-    let code = contentStr
-    // Fix imports inside sections
-    // from "../types" -> "@/types"
-    code = code.replace(/from "\.\.\/types"/g, 'from "@/types"')
-
-    // If it's a primary section component, check if it's in the manifest
-    if (fileName === folderName + ".tsx" || fileName.toLowerCase() === folderName.toLowerCase() + ".tsx") {
-      const componentName = fileName.replace(".tsx", "")
-      
-      if (includedSections.includes(componentName) || includedSections.includes(componentName.toLowerCase())) {
-        files[`components/${fileName}`] = code
-        sectionImports.push(`import { ${componentName} } from "@/components/${componentName}"`)
-        sectionElements.push(`      <${componentName} content={content.${componentName.toLowerCase()}} />`)
-      }
+  // 6. Copy Sections using exporter capabilities
+  for (const filePath of entry.exporter.files) {
+    if (!RAW_COMPONENTS[filePath]) {
+      console.warn(`[Assembler] File not found in RAW_COMPONENTS: ${filePath}`)
+      continue
     }
+
+    let code = RAW_COMPONENTS[filePath]
+    // Fix imports inside sections
+    code = code.replace(/from "\.\.\/types"/g, 'from "@/types"')
+    code = code.replace(/from "\.\/components"/g, 'from "./index"') // For flattened components that originally imported from a sibling folder
+    
+    const fileName = filePath.split("/").pop()!
+    files[`components/${fileName}`] = code
   }
 
-  // Fallback if registry case doesn't match perfectly
-  if (sectionImports.length === 0) {
-    sectionImports.push(`import { Hero } from "@/components/Hero"`)
-    sectionElements.push(`      <Hero content={content.hero} />`)
-  }
-
-  // 7. Generate page.tsx
-  files["app/page.tsx"] = `${sectionImports.join("\n")}
-import { content } from "@/content/home"
-
-export default function Page() {
-  return (
-    <main>
-${sectionElements.join("\n")}
-    </main>
-  )
-}
-`
+  // 7. Generate page.tsx using exporter capabilities
+  files["app/page.tsx"] = entry.exporter.generatePage(config)
 
   return files
 }

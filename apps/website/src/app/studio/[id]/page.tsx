@@ -11,7 +11,7 @@ export default async function StudioPage({ params }: { params: Promise<{ id: str
     return <div>Experience not found</div>
   }
 
-  return <Studio entry={entry} />
+  return <Studio id={id} />
 }
 
 export function generateStaticParams() {

@@ -1,2 +1,12 @@
 node_modules
 zenix-export-test/
+export-test-*/
+
+# Agent / Internal generated files
+.agents/
+EXPERIENCE_CHECKLIST.md
+screenshot-passes.js
+implementation_plan.md
+scratchpad/
+apps/website/design-history/
+apps/website/screenshot-passes.js

@@ -7,11 +7,10 @@ import { execSync } from "child_process"
 // Polyfill window so URL.createObjectURL doesn't crash if we inadvertently hit zip code
 ;(global as any).window = { URL: { createObjectURL: () => "", revokeObjectURL: () => "" } }
 
-const entry = experiences[0]
-const config = { theme: entry.defaultTheme, content: entry.defaultContent }
-
-const files = assembleProject(entry, config)
-const TARGET_DIR = path.join(process.cwd(), "../my-startup-test")
+for (const entry of experiences) {
+  const config = { theme: entry.theme, content: entry.content }
+  const files = assembleProject(entry, config)
+  const TARGET_DIR = path.join(process.cwd(), `../export-test-${entry.manifest.id}`)
 
 console.log("Cleaning target dir...")
 fs.rmSync(TARGET_DIR, { recursive: true, force: true })
@@ -24,4 +23,5 @@ for (const [filePath, content] of Object.entries(files)) {
   fs.writeFileSync(fullPath, content)
 }
 
-console.log("✅ Export output written to " + TARGET_DIR)
+  console.log("✅ Export output written to " + TARGET_DIR)
+}

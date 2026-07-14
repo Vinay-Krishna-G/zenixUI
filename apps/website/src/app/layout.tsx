@@ -1,5 +1,14 @@
 import type { Metadata } from "next"
+import { Inter, Newsreader } from "next/font/google"
 import "./globals.css"
+
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
+const newsreader = Newsreader({ 
+  subsets: ["latin"], 
+  style: ["normal", "italic"],
+  variable: "--font-serif" 
+})
+
 
 export const metadata: Metadata = {
   title: {
@@ -35,8 +44,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="en" className={`${inter.variable} ${newsreader.variable}`}>
+      <body className="font-sans antialiased text-white bg-[#030303]">{children}</body>
     </html>
   )
 }

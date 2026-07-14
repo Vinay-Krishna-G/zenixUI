@@ -1,7 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
 @theme {
+  --animate-fade-in-up: fade-in-up 1s ease-out forwards;
+  --animate-shimmer: shimmer 2s infinite linear;
+
   --color-brand-primary: var(--brand-primary);
   --color-brand-secondary: var(--brand-secondary);
   --color-brand-foreground: var(--brand-foreground);
@@ -25,25 +27,25 @@
 
 :root {
   /* Brand */
-  --brand-primary:       #6366f1;
-  --brand-secondary:     #8b5cf6;
-  --brand-foreground:    #ffffff;
+  --brand-primary:       #ffffff;
+  --brand-secondary:     #a3a3a3;
+  --brand-foreground:    #030303;
 
-  /* Surfaces */
-  --surface-bg:          #0a0a0a;
-  --surface-card:        #111111;
-  --surface-elevated:    #1a1a1a;
-  --surface-border:      #222222;
+  /* Surfaces - Calibrated Deep Slate / Black */
+  --surface-bg:          #030405;
+  --surface-card:        #080a0c;
+  --surface-elevated:    #111418;
+  --surface-border:      rgba(255, 255, 255, 0.06);
 
   /* Text */
   --text-heading:        #ffffff;
-  --text-body:           #a1a1aa;
-  --text-muted:          #52525b;
-  --text-on-brand:       #ffffff;
+  --text-body:           #8c929a;
+  --text-muted:          #525860;
+  --text-on-brand:       #030303;
 
   /* Typography */
-  --font-heading:        'Inter', sans-serif;
-  --font-body:           'Inter', sans-serif;
+  --font-heading:        var(--font-serif), serif;
+  --font-body:           var(--font-sans), sans-serif;
 
   /* Active radius — Studio updates these two */
   --radius-control: 12px;
@@ -70,3 +72,25 @@ body {
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(100%); }
+}
+
+@media (prefers-reduced-motion) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
