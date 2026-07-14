@@ -47,18 +47,8 @@ export interface ExperienceTheme {
   radius:          ExperienceRadius
 }
 
-// ─── Content ─────────────────────────────────────────────────────────────────
-
-export interface ExperienceContent {
-  nav:      NavContent
-  hero:     HeroContent
-  features: FeaturesContent
-  stats:    StatsContent
-  pricing:  PricingContent
-  faq:      FAQContent
-  cta:      CTAContent
-  footer:   FooterContent
-}
+// Content is now defined by the individual worlds (e.g. AuroraContent, HanamiContent)
+// The platform does not enforce a rigid content interface.
 
 // ─── Manifest ────────────────────────────────────────────────────────────────
 
@@ -77,9 +67,9 @@ export interface ExperienceManifest {
 
 // ─── Config ──────────────────────────────────────────────────────────────────
 
-export interface ExperienceConfig {
+export interface ExperienceConfig<TContent = any> {
   theme:   ExperienceTheme
-  content: ExperienceContent
+  content: TContent
 }
 
 // ─── Experience Capability Interface ──────────────────────────────────────────

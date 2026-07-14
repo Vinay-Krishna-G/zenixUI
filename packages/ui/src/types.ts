@@ -143,5 +143,30 @@ export interface SocialProofContent {
   quotes: SocialProofQuote[]
 }
 
+export interface StoryContent {
+  headline: string
+  body: string[]
+}
 
+export interface GalleryItem {
+  id: string
+  url: string
+  alt: string
+  caption?: string
+}
 
+export interface GalleryContent {
+  headline?: string
+  items: GalleryItem[]
+}
+
+export interface TestimonialItem {
+  quote: string
+  author: string
+  role?: string
+}
+
+export interface TestimonialsContent {
+  headline: string
+  items: TestimonialItem[]
+}

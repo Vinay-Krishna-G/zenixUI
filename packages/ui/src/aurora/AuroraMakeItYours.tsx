@@ -15,7 +15,7 @@ interface AuroraMakeItYoursProps {
 
 export function AuroraMakeItYours({ content }: AuroraMakeItYoursProps) {
   return (
-    <AuroraSection className="py-32 bg-[#050505]">
+    <AuroraSection className="py-24 sm:py-32">
       <AuroraContainer>
         
         <div className="flex flex-col items-center text-center mb-24">
@@ -49,23 +49,23 @@ export function AuroraMakeItYours({ content }: AuroraMakeItYoursProps) {
               {/* Visualizations */}
               <div className="mt-auto">
                 {item.visual === "customize" && (
-                  <div className="flex flex-col gap-4 bg-[#030303] p-6 border border-[#1f1f1f] rounded-none h-[180px] justify-center relative overflow-hidden">
+                  <div className="flex flex-col gap-4 bg-[var(--surface-bg)] p-6 border border-[var(--surface-border)] rounded-[var(--radius-control)] h-[180px] justify-center relative overflow-hidden">
                     <div className="flex items-center justify-between">
-                      <span className="text-xs text-[#a3a3a3] font-mono">Theme</span>
-                      <div className="w-8 h-4 rounded-full bg-[#1f1f1f] flex items-center p-0.5">
+                      <span className="text-xs text-text-muted font-mono">Theme</span>
+                      <div className="w-8 h-4 rounded-full bg-[var(--surface-border)] flex items-center p-0.5">
                         <div className="w-3 h-3 rounded-full bg-brand-primary translate-x-4" />
                       </div>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="text-xs text-[#a3a3a3] font-mono">Primary</span>
+                      <span className="text-xs text-text-muted font-mono">Primary</span>
                       <div className="flex gap-2">
-                        <div className="w-4 h-4 rounded-full bg-white border border-[#333]" />
+                        <div className="w-4 h-4 rounded-full bg-white border border-[var(--surface-border)]" />
                         <div className="w-4 h-4 rounded-full bg-brand-primary border border-brand-primary" />
                       </div>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="text-xs text-[#a3a3a3] font-mono">Radius</span>
-                      <div className="h-1 w-20 bg-[#1f1f1f] rounded-full relative">
+                      <span className="text-xs text-text-muted font-mono">Radius</span>
+                      <div className="h-1 w-20 bg-[var(--surface-border)] rounded-full relative">
                         <div className="absolute top-1/2 left-0 w-1/4 h-1 bg-brand-primary -translate-y-1/2 rounded-full" />
                         <div className="absolute top-1/2 left-1/4 w-3 h-3 bg-white rounded-full -translate-y-1/2 -translate-x-1/2 shadow-lg" />
                       </div>
@@ -74,26 +74,26 @@ export function AuroraMakeItYours({ content }: AuroraMakeItYoursProps) {
                 )}
 
                 {item.visual === "export" && (
-                  <div className="font-mono text-xs text-[#525252] bg-[#030303] p-6 border border-[#1f1f1f] rounded-none h-[180px] flex flex-col justify-center">
-                    <div className="flex items-center gap-2 mb-2 text-[#a3a3a3]">
+                  <div className="font-mono text-xs text-text-muted bg-[var(--surface-bg)] p-6 border border-[var(--surface-border)] rounded-[var(--radius-control)] h-[180px] flex flex-col justify-center">
+                    <div className="flex items-center gap-2 mb-2 text-text-body">
                       <span className="opacity-50">├──</span> app/
                     </div>
-                    <div className="flex items-center gap-2 mb-2 text-[#a3a3a3]">
+                    <div className="flex items-center gap-2 mb-2 text-text-body">
                       <span className="opacity-50">├──</span> components/
                     </div>
-                    <div className="flex items-center gap-2 mb-2 text-[#a3a3a3]">
+                    <div className="flex items-center gap-2 mb-2 text-text-body">
                       <span className="opacity-50">├──</span> content/
                     </div>
-                    <div className="flex items-center gap-2 text-[#a3a3a3]">
+                    <div className="flex items-center gap-2 text-text-body">
                       <span className="opacity-50">└──</span> public/
                     </div>
                   </div>
                 )}
 
                 {item.visual === "continue" && (
-                  <div className="font-mono text-[11px] leading-relaxed text-[#a3a3a3] bg-[#030303] p-6 border border-[#1f1f1f] rounded-none h-[180px] flex flex-col justify-center">
+                  <div className="font-mono text-[11px] leading-relaxed text-text-body bg-[var(--surface-bg)] p-6 border border-[var(--surface-border)] rounded-[var(--radius-control)] h-[180px] flex flex-col justify-center">
                     <div><span className="text-brand-secondary">export default</span> <span className="text-brand-primary">function</span> <span className="text-white">Hero</span>() {'{'}</div>
-                    <div className="ml-4 text-[#525252] italic">// Continue in Cursor or VS Code...</div>
+                    <div className="ml-4 text-text-muted italic">// Continue in Cursor or VS Code...</div>
                     <div className="ml-4"><span className="text-brand-secondary">return</span> (</div>
                     <div className="ml-8"><span className="text-brand-primary">&lt;h1&gt;</span>{'{'}content.hero.title{'}'}<span className="text-brand-primary">&lt;/h1&gt;</span></div>
                     <div className="ml-4">)</div>

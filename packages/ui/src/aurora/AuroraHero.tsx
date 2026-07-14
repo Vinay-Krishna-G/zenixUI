@@ -38,23 +38,23 @@ export function AuroraHero({ content }: AuroraHeroProps) {
     <AuroraSection className="min-h-[90vh] justify-center pt-32 transition-colors duration-1000 overflow-visible" id="aurora-hero">
       {/* The Unforgettable Interaction: Ambient Light Follows Cursor */}
       <div 
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-primary/10 blur-[120px] rounded-full pointer-events-none z-0 mix-blend-screen transition-transform duration-700 ease-out" 
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-primary/5 blur-[160px] rounded-full pointer-events-none z-0 mix-blend-screen transition-transform duration-700 ease-out" 
         style={{ transform: `translate(calc(-50% + ${mousePosition.x * 0.15}px), calc(-50% + ${mousePosition.y * 0.15}px))` }}
         aria-hidden="true" 
       />
       
       <AuroraContainer className="flex flex-col items-center text-center mt-12 relative z-10" ref={containerRef as any}>
         {content.badge && (
-          <AuroraBadge className="mb-10 opacity-0 translate-y-4 animate-[fade-in-up_1s_ease-out_0.2s_forwards]">
+          <AuroraBadge className="mb-12 opacity-0 translate-y-4 animate-[fade-in-up_1s_ease-out_0.2s_forwards]">
             {content.badge}
           </AuroraBadge>
         )}
 
-        <AuroraHeading as="h1" className="text-6xl sm:text-7xl lg:text-8xl max-w-4xl mb-8 opacity-0 translate-y-8 animate-[fade-in-up_1.2s_cubic-bezier(0.16,1,0.3,1)_0.4s_forwards]">
+        <AuroraHeading as="h1" className="text-6xl sm:text-7xl lg:text-8xl max-w-3xl mb-8 opacity-0 translate-y-8 animate-[fade-in-up_1.2s_cubic-bezier(0.16,1,0.3,1)_0.4s_forwards]">
           {content.headline}
         </AuroraHeading>
 
-        <AuroraBody className="text-lg sm:text-xl max-w-2xl mb-14 opacity-0 translate-y-8 animate-[fade-in-up_1.2s_cubic-bezier(0.16,1,0.3,1)_0.6s_forwards]">
+        <AuroraBody className="text-lg sm:text-xl max-w-xl mb-16 opacity-0 translate-y-8 animate-[fade-in-up_1.2s_cubic-bezier(0.16,1,0.3,1)_0.6s_forwards]">
           {content.subheadline}
         </AuroraBody>
 

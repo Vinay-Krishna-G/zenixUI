@@ -51,7 +51,7 @@ export function AuroraCard({ children, className = "", style }: { children: Reac
  */
 export function AuroraGlass({ children, className = "" }: { children: React.ReactNode, className?: string }) {
   return (
-    <div className={`bg-white/[0.02] backdrop-blur-xl border border-white/10 shadow-[0_4px_24px_rgba(0,0,0,0.4)] ${className}`}>
+    <div className={`bg-white/[0.02] backdrop-blur-xl border border-white/5 shadow-[0_4px_24px_rgba(0,0,0,0.4)] ${className}`}>
       {children}
     </div>
   )
@@ -61,7 +61,7 @@ export function AuroraGlass({ children, className = "" }: { children: React.Reac
 
 export function AuroraHeading({ children, className = "", as: Component = "h2" }: { children: React.ReactNode, className?: string, as?: any }) {
   return (
-    <Component className={`font-heading font-medium tracking-[-0.03em] text-text-heading leading-[1.05] ${className}`}>
+    <Component className={`font-heading font-medium tracking-[-0.04em] text-text-heading leading-[1.05] ${className}`}>
       {children}
     </Component>
   )
@@ -77,7 +77,7 @@ export function AuroraEyebrow({ children, className = "" }: { children: React.Re
 
 export function AuroraBody({ children, className = "" }: { children: React.ReactNode, className?: string }) {
   return (
-    <p className={`font-body font-light text-text-body leading-relaxed ${className}`}>
+    <p className={`font-body font-light text-text-body leading-[1.7] ${className}`}>
       {children}
     </p>
   )
@@ -93,7 +93,7 @@ export function AuroraButton({
 }: { 
   children: React.ReactNode, href?: string, variant?: "primary" | "secondary", className?: string 
 }) {
-  const baseClasses = "group relative inline-flex items-center justify-center gap-2 h-12 px-8 text-sm font-medium font-body transition-all active:scale-[0.98] overflow-hidden rounded-none"
+  const baseClasses = "group relative inline-flex items-center justify-center gap-2 h-12 px-8 text-sm font-medium font-body transition-all duration-300 ease-out active:scale-[0.98] overflow-hidden rounded-none"
   
   const variants = {
     primary: "bg-brand-primary text-brand-foreground hover:opacity-90 shadow-[0_0_40px_rgba(255,255,255,0.05)] hover:shadow-[0_0_60px_rgba(255,255,255,0.1)] rounded-[var(--radius-control)]",
@@ -114,8 +114,8 @@ export function AuroraButton({
 
 export function AuroraBadge({ children, className = "" }: { children: React.ReactNode, className?: string }) {
   return (
-    <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-none border border-[#1f1f1f] bg-white/[0.02] backdrop-blur-md text-[#a3a3a3] text-[11px] font-medium tracking-widest uppercase ${className}`}>
-      <span className="w-1 h-1 bg-brand-primary" aria-hidden="true" />
+    <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-[var(--radius-control)] border border-white/10 bg-white/[0.02] backdrop-blur-md text-text-body text-[11px] font-medium tracking-[0.2em] uppercase ${className}`}>
+      <span className="w-1 h-1 bg-brand-primary rounded-full" aria-hidden="true" />
       {children}
     </div>
   )

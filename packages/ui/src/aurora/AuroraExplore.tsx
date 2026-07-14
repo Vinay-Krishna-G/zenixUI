@@ -14,7 +14,7 @@ interface AuroraExploreProps {
 
 export function AuroraExplore({ content }: AuroraExploreProps) {
   return (
-    <AuroraSection className="py-32 bg-[#000000]">
+    <AuroraSection className="py-24 sm:py-32">
       <AuroraContainer>
         
         <div className="flex flex-col items-center text-center mb-20">
@@ -30,12 +30,12 @@ export function AuroraExplore({ content }: AuroraExploreProps) {
         </div>
 
         {/* Living Experiences Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#1f1f1f] max-w-6xl mx-auto border border-[#1f1f1f]">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[var(--surface-border)] max-w-6xl mx-auto border border-[var(--surface-border)]">
           {content.items.map((item, idx) => (
             <a 
               key={idx}
               href={item.href}
-              className="group relative bg-[#0a0a0a] min-h-[300px] sm:min-h-[400px] p-8 flex flex-col justify-between overflow-hidden transition-colors hover:bg-[#0d0d0d]"
+              className="group relative bg-[var(--surface-card)] min-h-[300px] sm:min-h-[400px] p-8 flex flex-col justify-between overflow-hidden transition-all duration-500 ease-out hover:bg-[var(--surface-elevated)]"
             >
               {/* Subtle hover reveal for background abstract shape */}
               <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/0 to-transparent group-hover:from-brand-primary/5 transition-all duration-700 ease-out" />
@@ -56,7 +56,7 @@ export function AuroraExplore({ content }: AuroraExploreProps) {
                   {item.title}
                 </AuroraHeading>
                 
-                <div className="w-10 h-10 rounded-full border border-[#1f1f1f] flex items-center justify-center bg-[#030303] text-[#525252] transition-all duration-500 group-hover:bg-[#ffffff] group-hover:text-[#030303] group-hover:border-[#ffffff] group-hover:rotate-45">
+                <div className="w-10 h-10 rounded-full border border-[var(--surface-border)] flex items-center justify-center bg-[var(--surface-bg)] text-text-muted transition-all duration-500 group-hover:bg-white group-hover:text-black group-hover:border-white group-hover:rotate-45">
                   <ArrowUpRight className="w-4 h-4" />
                 </div>
               </div>

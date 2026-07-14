@@ -1,4 +1,5 @@
 import type { Experience, ExperienceConfig } from "@/types/experience"
+import type { AuroraContent } from "@zenix/ui"
 import { manifest }       from "./manifest"
 import { defaultTheme }   from "./theme"
 import { content }        from "./content"
@@ -14,7 +15,7 @@ import {
   AuroraCTA 
 } from "@zenix/ui"
 
-function AuroraPreview({ config }: { config: ExperienceConfig }) {
+function AuroraPreview({ config }: { config: ExperienceConfig<AuroraContent> }) {
   // We use the content from the config, which Studio can override
   const c = config.content
   

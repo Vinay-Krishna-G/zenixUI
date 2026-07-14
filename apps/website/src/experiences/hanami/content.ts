@@ -1,6 +1,6 @@
-import { ExperienceConfig } from "@/types/experience"
+import { HanamiContent } from "@zenix/ui"
 
-export const content: ExperienceConfig["content"] = {
+export const content: HanamiContent = {
   hero: {
     headline: "We've been expecting you.",
     subheadline: "A digital sanctuary built on warmth, patience, and hospitality.",
@@ -38,41 +38,35 @@ export const content: ExperienceConfig["content"] = {
     ],
     cta: { label: "Get Started", href: "#welcome" }
   },
-  stats: {
-    items: [
-      { value: "0ms", label: "Runtime overhead" },
-      { value: "100%", label: "Code ownership" },
-      { value: "∞", label: "Customizability" }
+  story: {
+    headline: "We believe hospitality begins long before someone walks through the door.",
+    body: [
+      "Every digital interaction is an opportunity to make someone feel expected. We don't just build websites; we design spaces that respect your time, your focus, and your intention.",
+      "By removing the noise and artificial urgency of modern software, we create room for genuine connection."
     ]
   },
-  pricing: {
-    headline: "Simple pricing.",
-    subheadline: "No subscriptions.",
-    plans: [
-      {
-        name: "Lifetime",
-        price: "$199",
-        description: "One time payment. Yours forever.",
-        features: ["All components", "Figma files", "Lifetime updates"],
-        cta: { label: "Purchase", href: "#" },
-        featured: true
-      }
+  gallery: {
+    headline: "Atmosphere",
+    items: [
+      { id: "1", url: "", alt: "Warm interior lighting", caption: "Soft illumination" },
+      { id: "2", url: "", alt: "Tactile surfaces", caption: "Natural materials" },
+      { id: "3", url: "", alt: "Quiet space", caption: "Room to breathe" }
     ]
   },
-  faq: {
-    headline: "Questions & Answers",
-    subheadline: "Everything you need to know.",
+  testimonials: {
+    headline: "Quiet Confidence",
     items: [
       {
-        question: "Can I use this for client work?",
-        answer: "Yes, you can use ZenixUI for unlimited client projects."
+        quote: "It felt less like using a piece of software, and more like being welcomed into a carefully curated room.",
+        author: "Elena R.",
+        role: "Guest"
       }
     ]
   },
   cta: {
-    headline: "Ready to start?",
-    subheadline: "Join thousands of developers building better interfaces.",
-    primaryCta: { label: "Get Access", href: "#" }
+    headline: "Begin your visit",
+    subheadline: "We've been expecting you. Stay as long as you'd like.",
+    primaryCta: { label: "Step Inside", href: "#" }
   },
   footer: {
     brandName: "Hanami",

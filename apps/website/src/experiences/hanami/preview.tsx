@@ -1,22 +1,33 @@
-"use client"
-import React, { useRef, useEffect, useState } from "react"
+import React from "react"
 import { ExperienceConfig } from "@/types/experience"
-import { HanamiHero, HanamiCards } from "@zenix/ui"
+import { 
+  HanamiHero, 
+  HanamiStory,
+  HanamiCards, 
+  HanamiGallery,
+  HanamiTestimonials,
+  HanamiCTA,
+  HanamiFooter,
+  HanamiContent 
+} from "@zenix/ui"
 
-export function HanamiPreview({ config }: { config: ExperienceConfig }) {
-  // To implement the "Welcome Effect" we add the active-context 
-  // when the user's cursor is in the preview, or simply let CSS handle :hover
+export function HanamiPreview({ config }: { config: ExperienceConfig<HanamiContent> }) {
+  const c = config.content
   return (
-    <div className="font-sans antialiased text-stone-900 selection:bg-amber-100 selection:text-amber-900">
-      <HanamiHero 
-        headline={config.content.hero.headline}
-        subheadline={config.content.hero.subheadline}
-        primaryCta={config.content.hero.primaryCta}
-      />
-      <HanamiCards 
-        headline={config.content.features.headline}
-        items={config.content.features.items}
-      />
+    <div 
+      className="w-full min-h-screen transition-colors duration-1000 ease-in-out"
+      style={{ 
+        backgroundColor: "var(--surface-bg)",
+        color: "var(--text-body)" 
+      }}
+    >
+      <HanamiHero {...c.hero} />
+      <HanamiStory {...c.story} />
+      <HanamiCards {...c.features} />
+      <HanamiGallery {...c.gallery} />
+      <HanamiTestimonials {...c.testimonials} />
+      <HanamiCTA {...c.cta} />
+      <HanamiFooter {...c.footer} />
     </div>
   )
 }
