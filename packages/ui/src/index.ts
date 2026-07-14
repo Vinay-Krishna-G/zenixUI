@@ -22,6 +22,7 @@ export { AuroraSocialProof } from "./aurora/AuroraSocialProof"
 
 // Hanami sections
 export * from "./hanami/components"
+export * from "./hanami/behavior"
 
 // Types
 export * from "./types"

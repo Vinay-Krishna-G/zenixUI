@@ -14,6 +14,11 @@ export const hanami: Experience = {
   exporter: {
     files: [
       "hanami/components/index.tsx",
+      "hanami/components/Cards.tsx",
+      "hanami/behavior/index.ts",
+      "hanami/behavior/Presence.tsx",
+      "hanami/behavior/Stillness.tsx",
+      "hanami/behavior/Focus.tsx",
       "hanami/behavior/index.css",
       "hanami/behavior/timing.css",
       "hanami/behavior/presence.css",
@@ -22,7 +27,7 @@ export const hanami: Experience = {
       "hanami/behavior/stillness.css",
     ],
     generatePage: (config) => {
-      return `import { HanamiHero } from "@/components/index"
+      return `import { HanamiHero, HanamiCards } from "@/components/index"
 import { content } from "@/content/home"
 import "@/behavior/index.css"
 
@@ -33,6 +38,10 @@ export default function Page() {
         headline={content.hero.headline}
         subheadline={content.hero.subheadline}
         primaryCta={content.hero.primaryCta}
+      />
+      <HanamiCards 
+        headline={content.features.headline}
+        items={content.features.items}
       />
     </main>
   )

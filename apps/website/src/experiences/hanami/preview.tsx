@@ -1,7 +1,7 @@
 "use client"
 import React, { useRef, useEffect, useState } from "react"
 import { ExperienceConfig } from "@/types/experience"
-import { HanamiHero } from "@zenix/ui"
+import { HanamiHero, HanamiCards } from "@zenix/ui"
 
 export function HanamiPreview({ config }: { config: ExperienceConfig }) {
   // To implement the "Welcome Effect" we add the active-context 
@@ -12,6 +12,10 @@ export function HanamiPreview({ config }: { config: ExperienceConfig }) {
         headline={config.content.hero.headline}
         subheadline={config.content.hero.subheadline}
         primaryCta={config.content.hero.primaryCta}
+      />
+      <HanamiCards 
+        headline={config.content.features.headline}
+        items={config.content.features.items}
       />
     </div>
   )

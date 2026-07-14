@@ -50,7 +50,19 @@ How does ZenixUI react?
 * **The Implementation Rule:** Every new interaction must first become a reusable behavioral primitive before becoming an experience-specific effect.
 * **The Identity Law:** Every world should be identifiable even if all colors are removed. The spacing, typography, rhythm, motion, and interaction must reveal the world's identity independently of its palette.
 
-## 6. Materials
+## 6. The Attention Model
+
+A world is ultimately defined by how it manages a user's attention. Animation is just one technique; attention is the real primitive. 
+
+Before proposing an interaction, animation, or layout shift, ask if it serves the world's primary attention goal. If not, delete it.
+
+* **Aurora:** Focus attention. (Sharpens the mind, reduces noise, clarifies paths.)
+* **Hanami:** Relax attention. (Creates space, softens edges, gently makes room for the user.)
+* **Atlas:** Direct attention. (Establishes authority, commands the eye, structured hierarchy.)
+* **Pulse:** Expand attention. (Creates serendipity, surprises the user, energetic exploration.)
+* **Forge:** Intensify attention. (Empowers the user, high-density tooling, maximum control.)
+
+## 7. Materials
 ZenixUI is built on a foundation of physical materials. We do not design abstract shapes; we simulate reality.
 
 * **Stone:** Vast, quiet, solid backgrounds that provide grounding.

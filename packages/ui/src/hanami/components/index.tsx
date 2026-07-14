@@ -1,5 +1,5 @@
 import React, { forwardRef } from "react"
-import "../behavior/index.css"
+import { Presence, Stillness, FocusGroup, FocusItem } from "../behavior"
 
 export interface HanamiHeroProps {
   headline: string
@@ -10,20 +10,25 @@ export interface HanamiHeroProps {
 export const HanamiHero = forwardRef<HTMLElement, HanamiHeroProps>(
   ({ headline, subheadline, primaryCta }, ref) => {
     return (
-      <section 
+      <FocusGroup 
+        as="section"
         ref={ref}
-        className="relative min-h-[90vh] flex flex-col justify-center px-6 overflow-hidden focus-group"
+        className="relative min-h-[90vh] flex flex-col justify-center px-6 overflow-hidden"
       >
         {/* Stillness BG */}
-        <div className="absolute inset-0 z-0 stillness-bg" style={{ backgroundColor: "var(--surface-bg)" }}>
-          {/* Subtle noise or texture can go here in the future */}
-        </div>
+        <Stillness 
+          type="bg" 
+          className="absolute inset-0 z-0" 
+          style={{ backgroundColor: "var(--surface-bg)" }}
+        />
 
         {/* Content Container */}
-        <div className="relative z-10 max-w-4xl mx-auto w-full flex flex-col items-start focus-item">
+        <FocusItem className="relative z-10 max-w-4xl mx-auto w-full flex flex-col items-start">
           
-          <h1 
-            className="text-5xl md:text-7xl lg:text-8xl font-medium tracking-tight mb-8 stillness-text"
+          <Stillness 
+            as="h1"
+            type="text"
+            className="text-5xl md:text-7xl lg:text-8xl font-medium tracking-tight mb-8"
             style={{ 
               color: "var(--text-heading)", 
               fontFamily: "var(--font-heading)",
@@ -31,7 +36,7 @@ export const HanamiHero = forwardRef<HTMLElement, HanamiHeroProps>(
             }}
           >
             {headline}
-          </h1>
+          </Stillness>
 
           <p 
             className="text-lg md:text-2xl font-normal mb-12 max-w-2xl"
@@ -44,9 +49,10 @@ export const HanamiHero = forwardRef<HTMLElement, HanamiHeroProps>(
             {subheadline}
           </p>
 
-          <a 
+          <Presence 
+            as="a"
             href={primaryCta.href}
-            className="presence-surface space-responsive inline-flex items-center justify-center font-medium"
+            className="inline-flex items-center justify-center font-medium"
             style={{
               backgroundColor: "var(--brand-primary)",
               color: "var(--text-on-brand)",
@@ -57,10 +63,12 @@ export const HanamiHero = forwardRef<HTMLElement, HanamiHeroProps>(
             } as React.CSSProperties}
           >
             {primaryCta.label}
-          </a>
-        </div>
-      </section>
+          </Presence>
+        </FocusItem>
+      </FocusGroup>
     )
   }
 )
 HanamiHero.displayName = "HanamiHero"
+
+export * from "./Cards"
