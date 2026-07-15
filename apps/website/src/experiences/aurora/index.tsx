@@ -14,7 +14,8 @@ import {
   AuroraMakeItYours, 
   AuroraSocialProof, 
   AuroraCTA,
-  AuroraFooter
+  AuroraFooter,
+  AdaptiveCursor
 } from "@zenix/ui"
 
 function AuroraPreview({ config }: { config: ExperienceConfig<AuroraContent> }) {
@@ -23,6 +24,7 @@ function AuroraPreview({ config }: { config: ExperienceConfig<AuroraContent> }) 
   
   return (
     <>
+      <AdaptiveCursor />
       <AuroraNav content={c.nav} />
       <main>
         <AuroraHero content={c.hero} />
@@ -59,7 +61,10 @@ export const aurora: Experience = {
       "aurora/AuroraMakeItYours.tsx",
       "aurora/AuroraSocialProof.tsx",
       "aurora/AuroraCTA.tsx",
-      "aurora/AuroraFooter.tsx"
+      "aurora/AuroraFooter.tsx",
+      "aurora/behavior/useMousePosition.ts",
+      "aurora/behavior/useFlashlight.ts",
+      "aurora/behavior/AdaptiveCursor.tsx"
     ],
     generatePage: (config) => {
       return `import { AuroraNav } from "@/components/AuroraNav"
@@ -70,11 +75,13 @@ import { AuroraMakeItYours } from "@/components/AuroraMakeItYours"
 import { AuroraSocialProof } from "@/components/AuroraSocialProof"
 import { AuroraCTA } from "@/components/AuroraCTA"
 import { AuroraFooter } from "@/components/AuroraFooter"
+import { AdaptiveCursor } from "@/behavior/AdaptiveCursor"
 import { content } from "@/content/home"
 
 export default function Page() {
   return (
     <>
+      <AdaptiveCursor />
       <AuroraNav content={content.nav} />
       <main>
         <AuroraHero content={content.hero} />

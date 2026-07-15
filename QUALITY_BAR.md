@@ -44,3 +44,21 @@ The experience must feel native and beautifully adapted on mobile, tablet, and d
 ## 9. Lighthouse
 **90+ Score.**
 Performance, Best Practices, SEO, and Accessibility must score 90+ out of the box for the exported Next.js application.
+
+## Behavior Manifestos
+
+To ensure the identity of each world remains focused, any new component or animation must adhere to the world's manifesto.
+
+### Aurora: "Calm Intelligence"
+* Cursor responds
+* Glass refracts
+* Light follows
+* Motion is purposeful
+* Nothing bounces
+
+### Hanami: "Grace in Stillness"
+* Motion waits
+* Spacing breathes
+* Typography leads
+* Color whispers
+* Scroll feels weightless

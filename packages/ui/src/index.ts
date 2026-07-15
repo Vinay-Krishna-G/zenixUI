@@ -20,6 +20,8 @@ export { AuroraExplore } from "./aurora/AuroraExplore"
 export { AuroraMakeItYours } from "./aurora/AuroraMakeItYours"
 export { AuroraSocialProof } from "./aurora/AuroraSocialProof"
 export { AuroraFooter } from "./aurora/AuroraFooter"
+export * from "./aurora/behavior/AdaptiveCursor"
+export * from "./aurora/behavior/useMousePosition"
 // Hanami sections
 export * from "./hanami/components"
 export * from "./hanami/behavior"

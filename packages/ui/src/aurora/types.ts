@@ -6,6 +6,7 @@ import {
   MakeItYoursContent,
   SocialProofContent,
   CTAContent,
+  FooterContent,
 } from "../types"
 
 export interface AuroraContent {
@@ -16,4 +17,5 @@ export interface AuroraContent {
   makeItYours: MakeItYoursContent
   socialProof: SocialProofContent
   cta: CTAContent
+  footer: FooterContent
 }
