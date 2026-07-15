@@ -10,7 +10,7 @@ export const HanamiGallery = forwardRef<HTMLElement, HanamiGalleryProps>(
         <FocusGroup 
         as="section"
         ref={ref}
-        className="py-32 sm:py-48 px-6 max-w-7xl mx-auto w-full"
+        className="relative z-10 -mt-24 pb-32 px-6 max-w-7xl mx-auto w-full"
       >
         {headline && (
           <Stillness type="text" className="mb-24 text-center">

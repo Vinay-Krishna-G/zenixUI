@@ -20,6 +20,7 @@ export const hanami: Experience = {
       "hanami/components/Story.tsx",
       "hanami/components/Cards.tsx",
       "hanami/components/Gallery.tsx",
+      "hanami/components/Atmosphere.tsx",
       "hanami/components/Testimonials.tsx",
       "hanami/components/CTA.tsx",
       "hanami/components/Footer.tsx",
@@ -41,6 +42,7 @@ export const hanami: Experience = {
   HanamiStory,
   HanamiCards,
   HanamiGallery,
+  HanamiAtmosphere,
   HanamiTestimonials,
   HanamiCTA,
   HanamiFooter
@@ -60,6 +62,7 @@ export default function Page() {
       <HanamiHero {...content.hero} />
       <HanamiStory {...content.story} />
       <HanamiCards {...content.features} />
+      <HanamiAtmosphere {...content.atmosphere} />
       <HanamiGallery {...content.gallery} />
       <HanamiTestimonials {...content.testimonials} />
       <HanamiCTA {...content.cta} />

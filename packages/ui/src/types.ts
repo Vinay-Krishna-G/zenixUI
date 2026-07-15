@@ -17,6 +17,7 @@ export interface HeroContent {
   subheadline:   string
   primaryCta:    { label: string; href: string }
   secondaryCta?: { label: string; href: string }
+  imageUrl?:     string
 }
 
 export interface FeatureItem {
@@ -147,6 +148,7 @@ export interface SocialProofContent {
 export interface StoryContent {
   headline: string
   body: string[]
+  imageUrl?: string
 }
 
 export interface GalleryItem {

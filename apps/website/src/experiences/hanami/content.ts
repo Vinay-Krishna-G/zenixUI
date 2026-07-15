@@ -7,7 +7,8 @@ export const content: HanamiContent = {
     primaryCta: {
       label: "Step Inside",
       href: "#welcome"
-    }
+    },
+    imageUrl: "/images/hanami/hero.png"
   },
   features: {
     headline: "Thoughtfully crafted.",
@@ -43,14 +44,15 @@ export const content: HanamiContent = {
     body: [
       "Every digital interaction is an opportunity to make someone feel expected. We don't just build websites; we design spaces that respect your time, your focus, and your intention.",
       "By removing the noise and artificial urgency of modern software, we create room for genuine connection."
-    ]
+    ],
+    imageUrl: "/images/hanami/story.png"
   },
   gallery: {
     headline: "Atmosphere",
     items: [
-      { id: "1", url: "", alt: "Warm interior lighting", caption: "Soft illumination" },
-      { id: "2", url: "", alt: "Tactile surfaces", caption: "Natural materials" },
-      { id: "3", url: "", alt: "Quiet space", caption: "Room to breathe" }
+      { id: "1", url: "/images/hanami/gallery.png", alt: "Warm interior lighting", caption: "Soft illumination" },
+      { id: "2", url: "/images/hanami/gallery.png", alt: "Tactile surfaces", caption: "Natural materials" },
+      { id: "3", url: "/images/hanami/gallery.png", alt: "Quiet space", caption: "Room to breathe" }
     ]
   },
   testimonials: {
@@ -74,5 +76,9 @@ export const content: HanamiContent = {
     copyright: "© 2026 ZenixUI. All rights reserved.",
     links: [],
     social: []
+  },
+  atmosphere: {
+    url: "/images/hanami/atmosphere.png",
+    alt: "Soft linen with warm sunlight"
   }
 }

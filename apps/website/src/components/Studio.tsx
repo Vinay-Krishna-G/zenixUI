@@ -139,13 +139,13 @@ export function Studio({ id }: StudioProps) {
           <button 
             onClick={handleExport}
             disabled={isExporting || isExported}
-            className={`text-xs px-3 py-1.5 rounded transition-colors font-medium cursor-pointer ${
+            className={`text-xs px-4 py-1.5 rounded transition-all duration-300 font-medium cursor-pointer ${
               isExported 
-                ? "bg-green-500 text-white" 
-                : "bg-brand-primary hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed text-white"
+                ? "bg-green-500/20 border border-green-500/50 text-green-400" 
+                : "bg-[#161616] border border-[#333] text-[#a39a8c] hover:border-[#a39a8c] hover:bg-[#1f1d1a] shadow-[0_2px_10px_rgba(0,0,0,0.1)] disabled:opacity-50 disabled:cursor-not-allowed"
             }`}
           >
-            {isExporting ? "Exporting..." : isExported ? "✓ Export Ready" : "Export"}
+            {isExporting ? "Exporting..." : isExported ? "✓ Ready" : "Export"}
           </button>
         </div>
 
@@ -185,33 +185,77 @@ export function Studio({ id }: StudioProps) {
         <div className="p-5 overflow-y-auto flex-1 space-y-6">
           {activeTab === "appearance" ? (
             <>
-              <div className="space-y-3">
-                <label className="text-xs font-semibold text-zinc-400 uppercase tracking-wider">Brand Color</label>
-                <div className="flex gap-2 items-center">
-                  <input type="color" value={config.theme.primaryColor} onChange={e => updateTheme("primaryColor", e.target.value)} className="w-8 h-8 rounded cursor-pointer bg-transparent border-0 p-0" />
-                  <input type="text" value={config.theme.primaryColor} onChange={e => updateTheme("primaryColor", e.target.value)} className="bg-[#222] border border-[#333] rounded px-2 py-1 text-sm flex-1" />
+              {/* BRAND */}
+              <div className="space-y-4">
+                <h3 className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest border-b border-[#222] pb-2">Brand</h3>
+                <div className="space-y-3">
+                  <label className="text-xs font-medium text-zinc-400">Primary Color</label>
+                  <div className="flex gap-2 items-center">
+                    <input type="color" value={config.theme.primaryColor} onChange={e => updateTheme("primaryColor", e.target.value)} className="w-8 h-8 rounded cursor-pointer bg-transparent border-0 p-0" />
+                    <input type="text" value={config.theme.primaryColor} onChange={e => updateTheme("primaryColor", e.target.value)} className="bg-[#222] border border-[#333] rounded px-2 py-1.5 text-sm flex-1 font-mono" />
+                  </div>
                 </div>
               </div>
-              <div className="space-y-3">
-                <label className="text-xs font-semibold text-zinc-400 uppercase tracking-wider">Background</label>
-                <div className="flex gap-2 items-center">
-                  <input type="color" value={config.theme.backgroundColor} onChange={e => updateTheme("backgroundColor", e.target.value)} className="w-8 h-8 rounded cursor-pointer bg-transparent border-0 p-0" />
-                  <input type="text" value={config.theme.backgroundColor} onChange={e => updateTheme("backgroundColor", e.target.value)} className="bg-[#222] border border-[#333] rounded px-2 py-1 text-sm flex-1" />
+
+              {/* TYPOGRAPHY */}
+              <div className="space-y-4">
+                <h3 className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest border-b border-[#222] pb-2">Typography</h3>
+                <div className="space-y-3">
+                  <label className="text-xs font-medium text-zinc-400">Heading Font</label>
+                  <select 
+                    value={config.theme.headingFont} 
+                    onChange={e => updateTheme("headingFont", e.target.value)}
+                    className="w-full bg-[#222] border border-[#333] rounded px-2 py-1.5 text-sm"
+                  >
+                    <option value="Inter">Inter</option>
+                    <option value="Playfair Display">Playfair Display</option>
+                    <option value="Outfit">Outfit</option>
+                  </select>
                 </div>
               </div>
-              <div className="space-y-3">
-                <label className="text-xs font-semibold text-zinc-400 uppercase tracking-wider">Corner Style</label>
-                <select 
-                  value={config.theme.radius} 
-                  onChange={e => updateTheme("radius", e.target.value)}
-                  className="w-full bg-[#222] border border-[#333] rounded px-2 py-1.5 text-sm"
-                >
-                  <option value="none">Sharp</option>
-                  <option value="sm">Subtle</option>
-                  <option value="md">Rounded</option>
-                  <option value="lg">Soft</option>
-                  <option value="full">Pill</option>
-                </select>
+
+              {/* SURFACE */}
+              <div className="space-y-4">
+                <h3 className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest border-b border-[#222] pb-2">Surface</h3>
+                <div className="space-y-3">
+                  <label className="text-xs font-medium text-zinc-400">Background</label>
+                  <div className="flex gap-2 items-center">
+                    <input type="color" value={config.theme.backgroundColor} onChange={e => updateTheme("backgroundColor", e.target.value)} className="w-8 h-8 rounded cursor-pointer bg-transparent border-0 p-0" />
+                    <input type="text" value={config.theme.backgroundColor} onChange={e => updateTheme("backgroundColor", e.target.value)} className="bg-[#222] border border-[#333] rounded px-2 py-1.5 text-sm flex-1 font-mono" />
+                  </div>
+                </div>
+                <div className="space-y-3">
+                  <label className="text-xs font-medium text-zinc-400">Corner Radius</label>
+                  <select 
+                    value={config.theme.radius} 
+                    onChange={e => updateTheme("radius", e.target.value as any)}
+                    className="w-full bg-[#222] border border-[#333] rounded px-2 py-1.5 text-sm"
+                  >
+                    <option value="none">Sharp</option>
+                    <option value="sm">Subtle</option>
+                    <option value="md">Rounded</option>
+                    <option value="lg">Soft</option>
+                    <option value="full">Pill</option>
+                  </select>
+                </div>
+              </div>
+
+              {/* BEHAVIOR */}
+              <div className="space-y-4">
+                <h3 className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest border-b border-[#222] pb-2">Behavior</h3>
+                <div className="space-y-3">
+                  <label className="text-xs font-medium text-zinc-400">Interaction Style</label>
+                  <select 
+                    value={config.theme.behaviorPreset || "calm"} 
+                    onChange={e => updateTheme("behaviorPreset", e.target.value as any)}
+                    className="w-full bg-[#222] border border-[#333] rounded px-2 py-1.5 text-sm"
+                  >
+                    <option value="calm">Calm (Default)</option>
+                    <option value="still">Still</option>
+                    <option value="expressive">Expressive</option>
+                    <option value="confident">Confident</option>
+                  </select>
+                </div>
               </div>
             </>
           ) : (

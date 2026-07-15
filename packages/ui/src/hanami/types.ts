@@ -18,4 +18,5 @@ export interface HanamiContent {
   testimonials: TestimonialsContent
   cta: CTAContent
   footer: FooterContent
+  atmosphere?: { url: string; alt: string }
 }

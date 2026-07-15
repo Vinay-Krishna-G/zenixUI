@@ -5,6 +5,7 @@ import {
   HanamiStory,
   HanamiCards, 
   HanamiGallery,
+  HanamiAtmosphere,
   HanamiTestimonials,
   HanamiCTA,
   HanamiFooter,
@@ -24,6 +25,7 @@ export function HanamiPreview({ config }: { config: ExperienceConfig<HanamiConte
       <HanamiHero {...c.hero} />
       <HanamiStory {...c.story} />
       <HanamiCards {...c.features} />
+      <HanamiAtmosphere {...c.atmosphere} />
       <HanamiGallery {...c.gallery} />
       <HanamiTestimonials {...c.testimonials} />
       <HanamiCTA {...c.cta} />

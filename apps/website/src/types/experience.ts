@@ -45,6 +45,7 @@ export interface ExperienceTheme {
   headingFont:     string
   bodyFont:        string
   radius:          ExperienceRadius
+  behaviorPreset?: "calm" | "still" | "expressive" | "confident"
 }
 
 // Content is now defined by the individual worlds (e.g. AuroraContent, HanamiContent)

@@ -12,7 +12,7 @@ export const HanamiCards = forwardRef<HTMLElement, HanamiCardsProps>(
     return (
       <section
         ref={ref}
-        className="py-32 sm:py-48 px-6 max-w-7xl mx-auto w-full"
+        className="pt-16 pb-32 px-6 max-w-7xl mx-auto w-full"
       >
         <MotionPreset variant="relax" delay={0}>
           <h2 
@@ -31,13 +31,15 @@ export const HanamiCards = forwardRef<HTMLElement, HanamiCardsProps>(
             <div key={item.title + index} className="h-full">
               <MotionPreset variant="delayed-presence" delay={index} className="h-full">
                 <div 
-                  className="flex flex-col h-full border p-8 rounded-[var(--radius-card)] transition-colors duration-700 hover:bg-surface-elevated"
+                  className="flex flex-col h-full border p-10 rounded-[var(--radius-card)] transition-colors duration-700 hover:bg-surface-elevated relative overflow-hidden group"
                   style={{ 
                     backgroundColor: "var(--surface-card)",
                     borderColor: "var(--surface-border)",
-                    color: "var(--text-body)"
+                    color: "var(--text-body)",
+                    boxShadow: "inset 0 2px 10px rgba(0,0,0,0.01), inset 0 0 2px rgba(255,255,255,0.4)"
                   }}
                 >
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 bg-gradient-to-br from-brand-primary/5 to-transparent mix-blend-multiply pointer-events-none" />
                   {item.icon && (
                     <div className="mb-6 text-brand-primary opacity-80 text-3xl">
                       <span dangerouslySetInnerHTML={{ __html: item.icon }} />
