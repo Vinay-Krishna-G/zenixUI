@@ -22,9 +22,14 @@ export { AuroraSocialProof } from "./aurora/AuroraSocialProof"
 export { AuroraFooter } from "./aurora/AuroraFooter"
 export * from "./aurora/behavior/AdaptiveCursor"
 export * from "./aurora/behavior/useMousePosition"
+
 // Hanami sections
 export * from "./hanami/components"
 export * from "./hanami/behavior"
+
+// Solstice sections
+export * from "./solstice/components"
+export * from "./solstice/behavior"
 
 // Types
 export * from "./types"
