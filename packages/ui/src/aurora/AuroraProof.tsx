@@ -82,7 +82,7 @@ export function AuroraProof({ content }: AuroraProofProps) {
 
                 {item.visual === "checklist" && (
                   <div className="font-body text-sm text-[#a3a3a3] bg-[#030303] p-6 border border-[#1f1f1f] rounded-none h-[160px] flex flex-col justify-center gap-3">
-                    {["Next.js 15", "TypeScript", "Tailwind CSS", "SEO Ready", "Accessible"].map((check, i) => (
+                    {(item.checklist || []).map((check, i) => (
                       <div key={i} className="flex items-center gap-3 group">
                         <div className="w-4 h-4 rounded-full border border-brand-primary/50 flex items-center justify-center bg-brand-primary/10 group-hover:bg-brand-primary/30 transition-colors">
                           <div className="w-1.5 h-1.5 rounded-full bg-brand-primary" />

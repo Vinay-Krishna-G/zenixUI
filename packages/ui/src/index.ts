@@ -19,7 +19,7 @@ export { AuroraProof } from "./aurora/AuroraProof"
 export { AuroraExplore } from "./aurora/AuroraExplore"
 export { AuroraMakeItYours } from "./aurora/AuroraMakeItYours"
 export { AuroraSocialProof } from "./aurora/AuroraSocialProof"
-
+export { AuroraFooter } from "./aurora/AuroraFooter"
 // Hanami sections
 export * from "./hanami/components"
 export * from "./hanami/behavior"

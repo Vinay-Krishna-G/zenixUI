@@ -95,6 +95,7 @@ export interface ProofItem {
   description: string
   visual: "folder" | "code" | "checklist"
   codeSnippet?: string
+  checklist?: string[]
 }
 
 export interface ProofContent {

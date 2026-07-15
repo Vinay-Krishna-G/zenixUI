@@ -45,6 +45,7 @@ export const proofContent: ProofContent = {
       title: "Modern Standards",
       description: "The stack developers trust.",
       visual: "checklist",
+      checklist: ["Next.js 15", "TypeScript", "Tailwind CSS", "SEO Ready", "Accessible"]
     }
   ]
 }
@@ -106,6 +107,44 @@ export const socialProofContent: SocialProofContent = {
   ]
 }
 
+export const footerContent = {
+  brandName: "Aurora.",
+  brandTagline: "The modern standard for building intelligence.",
+  copyright: "© 2026 Aurora Inc. All rights reserved.",
+  links: [
+    {
+      title: "Product",
+      items: [
+        { label: "Features", href: "#features" },
+        { label: "Integrations", href: "#integrations" },
+        { label: "Pricing", href: "#pricing" },
+        { label: "Changelog", href: "#changelog" },
+      ]
+    },
+    {
+      title: "Company",
+      items: [
+        { label: "About Us", href: "#about" },
+        { label: "Careers", href: "#careers" },
+        { label: "Blog", href: "#blog" },
+        { label: "Contact", href: "#contact" },
+      ]
+    },
+    {
+      title: "Legal",
+      items: [
+        { label: "Privacy Policy", href: "#privacy" },
+        { label: "Terms of Service", href: "#terms" },
+      ]
+    }
+  ],
+  social: [
+    { platform: "Twitter", href: "#twitter" },
+    { platform: "GitHub", href: "#github" },
+    { platform: "Discord", href: "#discord" },
+  ]
+}
+
 export const content = {
   nav: navContent,
   hero: heroContent,
@@ -113,5 +152,6 @@ export const content = {
   explore: exploreContent,
   makeItYours: makeItYoursContent,
   socialProof: socialProofContent,
-  cta: ctaContent
+  cta: ctaContent,
+  footer: footerContent
 }

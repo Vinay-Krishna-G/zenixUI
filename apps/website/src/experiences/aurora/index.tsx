@@ -13,7 +13,8 @@ import {
   AuroraExplore, 
   AuroraMakeItYours, 
   AuroraSocialProof, 
-  AuroraCTA 
+  AuroraCTA,
+  AuroraFooter
 } from "@zenix/ui"
 
 function AuroraPreview({ config }: { config: ExperienceConfig<AuroraContent> }) {
@@ -31,6 +32,7 @@ function AuroraPreview({ config }: { config: ExperienceConfig<AuroraContent> }) 
         <AuroraSocialProof content={c.socialProof} />
       </main>
       <AuroraCTA content={c.cta} />
+      <AuroraFooter content={c.footer} />
     </>
   )
 }
@@ -56,7 +58,8 @@ export const aurora: Experience = {
       "aurora/AuroraExplore.tsx",
       "aurora/AuroraMakeItYours.tsx",
       "aurora/AuroraSocialProof.tsx",
-      "aurora/AuroraCTA.tsx"
+      "aurora/AuroraCTA.tsx",
+      "aurora/AuroraFooter.tsx"
     ],
     generatePage: (config) => {
       return `import { AuroraNav } from "@/components/AuroraNav"
@@ -66,6 +69,7 @@ import { AuroraExplore } from "@/components/AuroraExplore"
 import { AuroraMakeItYours } from "@/components/AuroraMakeItYours"
 import { AuroraSocialProof } from "@/components/AuroraSocialProof"
 import { AuroraCTA } from "@/components/AuroraCTA"
+import { AuroraFooter } from "@/components/AuroraFooter"
 import { content } from "@/content/home"
 
 export default function Page() {
@@ -80,6 +84,7 @@ export default function Page() {
         <AuroraSocialProof content={content.socialProof} />
       </main>
       <AuroraCTA content={content.cta} />
+      <AuroraFooter content={content.footer} />
     </>
   )
 }

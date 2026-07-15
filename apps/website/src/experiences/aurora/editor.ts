@@ -1,7 +1,7 @@
 import { ExperienceEditorSchema } from "../../types/experience"
 
 export const editor: ExperienceEditorSchema = {
-  order: ["nav", "hero", "proof", "explore", "makeItYours", "socialProof", "cta"],
+  order: ["nav", "hero", "proof", "explore", "makeItYours", "socialProof", "cta", "footer"],
   labels: {
     nav: "Navigation",
     hero: "Hero",
@@ -9,7 +9,8 @@ export const editor: ExperienceEditorSchema = {
     explore: "Experiences",
     makeItYours: "Process",
     socialProof: "Testimonials",
-    cta: "Bottom CTA"
+    cta: "Bottom CTA",
+    footer: "Footer"
   },
   fields: {
     nav: {
@@ -63,7 +64,8 @@ export const editor: ExperienceEditorSchema = {
           title: { kind: "string", label: "Title" },
           description: { kind: "textarea", label: "Description" },
           visual: { kind: "string", label: "Visual Type (folder/code/checklist)" },
-          codeSnippet: { kind: "textarea", label: "Code Snippet (Optional)" }
+          codeSnippet: { kind: "textarea", label: "Code Snippet (Optional)" },
+          checklist: { kind: "list", label: "Checklist (Optional)" }
         }
       }
     },
@@ -125,6 +127,34 @@ export const editor: ExperienceEditorSchema = {
         label: "Secondary Button",
         fields: {
           label: { kind: "string", label: "Label" },
+          href: { kind: "string", label: "URL" }
+        }
+      }
+    },
+    footer: {
+      brandName: { kind: "string", label: "Brand Name" },
+      brandTagline: { kind: "string", label: "Tagline" },
+      copyright: { kind: "string", label: "Copyright" },
+      links: {
+        kind: "list",
+        label: "Link Groups",
+        schema: {
+          title: { kind: "string", label: "Group Title" },
+          items: {
+            kind: "list",
+            label: "Links",
+            schema: {
+              label: { kind: "string", label: "Label" },
+              href: { kind: "string", label: "URL" }
+            }
+          }
+        }
+      },
+      social: {
+        kind: "list",
+        label: "Social Links",
+        schema: {
+          platform: { kind: "string", label: "Platform" },
           href: { kind: "string", label: "URL" }
         }
       }
