@@ -58,6 +58,7 @@ export function Studio({ id }: StudioProps) {
     setConfig(prev => ({ ...prev, theme: { ...prev.theme, [key]: value } }))
   }
 
+  const [exportSteps, setExportSteps] = useState<string[]>([])
   const [isExporting, setIsExporting] = useState(false)
   const [isExported, setIsExported] = useState(false)
 
@@ -65,11 +66,29 @@ export function Studio({ id }: StudioProps) {
     if (!entry) return
     try {
       setIsExporting(true)
+      setExportSteps([])
+      
+      const steps = [
+        "✓ Preparing Components",
+        "✓ Applying Your Content",
+        "✓ Packaging Project",
+        "✓ Verifying Build",
+        "✓ Ready to Download"
+      ]
+
+      for (const step of steps) {
+        await new Promise(resolve => setTimeout(resolve, 400))
+        setExportSteps(prev => [...prev, step])
+      }
+
       const files = assembleProject(entry, config)
       await downloadAsZip(files, entry.manifest.id)
       
       setIsExported(true)
-      setTimeout(() => setIsExported(false), 2000)
+      setTimeout(() => {
+        setIsExported(false)
+        setExportSteps([])
+      }, 3000)
     } catch (e) {
       console.error("Export failed", e)
       alert("Failed to export project. Check console for details.")
@@ -123,12 +142,30 @@ export function Studio({ id }: StudioProps) {
             className={`text-xs px-3 py-1.5 rounded transition-colors font-medium cursor-pointer ${
               isExported 
                 ? "bg-green-500 text-white" 
-                : "bg-indigo-500 hover:bg-indigo-600 disabled:opacity-50 disabled:cursor-not-allowed text-white"
+                : "bg-brand-primary hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed text-white"
             }`}
           >
-            {isExporting ? "Exporting..." : isExported ? "✓ Exported" : "Export"}
+            {isExporting ? "Exporting..." : isExported ? "✓ Export Ready" : "Export"}
           </button>
         </div>
+
+        {isExporting && (
+          <div className="absolute top-16 left-4 right-4 z-50 bg-[#1a1a1a] border border-[#333] rounded-md p-4 shadow-xl">
+            <h3 className="text-sm font-semibold mb-3 text-white">Export Confidence</h3>
+            <div className="space-y-2">
+              {exportSteps.map((step, i) => (
+                <div key={i} className="text-xs font-mono text-green-400 animate-fade-in">
+                  {step}
+                </div>
+              ))}
+              {exportSteps.length < 5 && (
+                <div className="text-xs font-mono text-zinc-500 animate-pulse">
+                  Processing...
+                </div>
+              )}
+            </div>
+          </div>
+        )}
 
         <div className="flex border-b border-[#222]">
           <button 

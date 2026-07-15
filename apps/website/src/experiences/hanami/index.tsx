@@ -69,7 +69,7 @@ export default function Page() {
 `
     },
     dependencies: {
-      "lucide-react": "^0.300.0"
+      "lucide-react": "^0.473.0"
     }
   }
 }

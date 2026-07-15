@@ -11,7 +11,7 @@ function walkDir(dir: string, fileList: Record<string, string> = {}) {
     const filePath = path.join(dir, file)
     if (fs.statSync(filePath).isDirectory()) {
       walkDir(filePath, fileList)
-    } else if (filePath.endsWith(".tsx") || filePath.endsWith(".ts")) {
+    } else if (filePath.endsWith(".tsx") || filePath.endsWith(".ts") || filePath.endsWith(".css")) {
       // Don't include index.ts or types.ts from root
       if (dir === UI_DIR && file === "index.ts") continue
       
