@@ -31,21 +31,25 @@ export function Studio({ id }: StudioProps) {
   })
   
   const [activeTab, setActiveTab] = useState<"appearance" | "content">("appearance")
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true)
+  const [isPreviewMode, setIsPreviewMode] = useState(false)
 
   // 2. Load from localStorage on mount
   useEffect(() => {
     if (!entry) return
-    /* 
-    const saved = localStorage.getItem(`zenix_config_${entry.manifest.id}`)
-    if (saved) {
-      try {
-        setConfig(JSON.parse(saved))
-      } catch (e) {
-        console.error("Failed to parse saved config", e)
-      }
+    const savedSidebar = localStorage.getItem("zenix_sidebar_open")
+    if (savedSidebar !== null) {
+      setIsSidebarOpen(savedSidebar === "true")
     }
-    */
   }, [entry?.manifest.id])
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(prev => {
+      const next = !prev;
+      localStorage.setItem("zenix_sidebar_open", String(next));
+      return next;
+    })
+  }
 
   // 3. Save to localStorage on change
   useEffect(() => {
@@ -131,23 +135,66 @@ export function Studio({ id }: StudioProps) {
   }
 
   return (
-    <div className="flex h-screen bg-[#0f0f0f] text-white overflow-hidden font-sans">
-      {/* Sidebar */}
-      <aside className="w-80 border-r border-[#222] bg-[#141414] flex flex-col flex-shrink-0">
-        <div className="p-4 border-b border-[#222] flex items-center justify-between">
-          <h1 className="font-semibold text-sm">Studio</h1>
-          <button 
-            onClick={handleExport}
-            disabled={isExporting || isExported}
-            className={`text-xs px-4 py-1.5 rounded transition-all duration-300 font-medium cursor-pointer ${
-              isExported 
-                ? "bg-green-500/20 border border-green-500/50 text-green-400" 
-                : "bg-[#161616] border border-[#333] text-[#a39a8c] hover:border-[#a39a8c] hover:bg-[#1f1d1a] shadow-[0_2px_10px_rgba(0,0,0,0.1)] disabled:opacity-50 disabled:cursor-not-allowed"
+    <div className="flex h-screen bg-[#0f0f0f] text-white overflow-hidden font-sans relative">
+      
+      {/* Preview Toggle */}
+      <div className="absolute top-4 left-1/2 -translate-x-1/2 z-50 bg-[#141414] border border-[#222] rounded-full p-1 flex shadow-[0_4px_24px_rgba(0,0,0,0.4)]">
+        <button 
+          onClick={() => setIsPreviewMode(false)} 
+          className={`px-4 py-1.5 text-xs font-medium rounded-full transition-colors ${!isPreviewMode ? 'bg-[#333] text-white shadow-sm' : 'text-zinc-500 hover:text-zinc-300'}`}
+        >
+          Editing
+        </button>
+        <button 
+          onClick={() => setIsPreviewMode(true)} 
+          className={`px-4 py-1.5 text-xs font-medium rounded-full transition-colors ${isPreviewMode ? 'bg-[#333] text-white shadow-sm' : 'text-zinc-500 hover:text-zinc-300'}`}
+        >
+          Preview
+        </button>
+      </div>
+
+      {/* Main Preview Area */}
+      <main className="flex-1 overflow-y-auto bg-[#0a0a0a] relative w-full h-full">
+        <div 
+          className="min-h-full w-full transition-colors duration-200" 
+          style={cssVars}
+        >
+          <entry.preview config={config} />
+        </div>
+      </main>
+
+      {/* Sidebar Overlay System */}
+      {!isPreviewMode && (
+        <>
+          {/* Collapsed State Toggle (The 'Z' logo) */}
+          <button
+            onClick={toggleSidebar}
+            className={`absolute top-4 left-4 z-40 w-10 h-10 rounded-lg bg-[#141414]/90 backdrop-blur border border-[#222] flex items-center justify-center transition-all duration-300 hover:bg-[#1a1a1a] shadow-lg group ${
+              isSidebarOpen ? 'opacity-0 pointer-events-none -translate-x-4' : 'opacity-100 translate-x-0'
+            }`}
+            title="Expand Studio"
+          >
+            <span className="font-serif font-bold text-lg text-zinc-300 group-hover:text-white">Z</span>
+          </button>
+
+          {/* Expanded Sidebar */}
+          <aside 
+            className={`absolute top-0 left-0 h-full w-80 border-r border-[#222] bg-[#141414]/95 backdrop-blur-xl flex flex-col z-50 transition-transform duration-300 ease-out shadow-2xl ${
+              isSidebarOpen ? "translate-x-0" : "-translate-x-full"
             }`}
           >
-            {isExporting ? "Exporting..." : isExported ? "✓ Ready" : "Export"}
-          </button>
-        </div>
+            <div className="p-4 border-b border-[#222] flex items-center justify-between">
+              <h1 className="font-semibold text-sm">Studio</h1>
+              <button 
+                onClick={toggleSidebar}
+                className="text-zinc-500 hover:text-white p-1 rounded hover:bg-[#222] transition-colors"
+                title="Collapse Studio"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+            </div>
 
         {isExporting && (
           <div className="absolute top-16 left-4 right-4 z-50 bg-[#1a1a1a] border border-[#333] rounded-md p-4 shadow-xl">
@@ -282,17 +329,24 @@ export function Studio({ id }: StudioProps) {
             </div>
           )}
         </div>
-      </aside>
 
-      {/* Main Preview Area */}
-      <main className="flex-1 overflow-y-auto bg-[#0a0a0a] relative">
-        <div 
-          className="min-h-full w-full transition-colors duration-200" 
-          style={cssVars}
-        >
-          <entry.preview config={config} />
+        {/* Export Footer */}
+        <div className="p-4 border-t border-[#222] bg-[#141414] mt-auto">
+          <button 
+            onClick={handleExport}
+            disabled={isExporting || isExported}
+            className={`w-full text-sm px-4 py-2.5 rounded transition-all duration-300 font-medium cursor-pointer flex justify-center items-center ${
+              isExported 
+                ? "bg-green-500/20 border border-green-500/50 text-green-400" 
+                : "bg-[#161616] border border-[#333] text-[#a39a8c] hover:border-[#a39a8c] hover:bg-[#1f1d1a] shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
+            }`}
+          >
+            {isExporting ? "Exporting..." : isExported ? "✓ Ready" : "Export"}
+          </button>
         </div>
-      </main>
+      </aside>
+      </>
+      )}
     </div>
   )
 }

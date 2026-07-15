@@ -13,18 +13,12 @@ export const HanamiHero = forwardRef<HTMLElement, HanamiHeroProps>(
     return (
       <section
         ref={ref}
-        className="relative min-h-[90vh] flex flex-col justify-center px-6 overflow-hidden bg-surface-bg pt-20 pb-32"
+        className="pt-32 pb-0 px-6 overflow-hidden bg-surface-bg flex flex-col items-center text-center"
       >
-        {imageUrl && (
-          <div className="absolute inset-0 z-0">
-            <img src={imageUrl} alt="Hero" className="w-full h-full object-cover opacity-90" />
-            <div className="absolute inset-0 bg-gradient-to-b from-surface-bg/30 via-transparent to-surface-bg" />
-          </div>
-        )}
-        <div className="relative z-10 max-w-4xl mx-auto w-full flex flex-col items-start mt-auto">
+        <div className="relative z-10 max-w-4xl mx-auto w-full flex flex-col items-center">
           <MotionPreset variant="relax" delay={0}>
             <h1
-              className="text-4xl md:text-5xl lg:text-6xl font-normal mb-10"
+              className="text-4xl md:text-5xl lg:text-6xl font-normal mb-8 tracking-tight"
               style={{ 
                 color: "var(--text-heading)", 
                 fontFamily: "var(--font-heading)",
@@ -37,7 +31,7 @@ export const HanamiHero = forwardRef<HTMLElement, HanamiHeroProps>(
 
           <MotionPreset variant="delayed-presence" delay={1}>
             <p 
-              className="text-lg md:text-xl font-normal mb-16 max-w-xl"
+              className="text-lg md:text-xl font-normal mb-12 max-w-2xl opacity-90"
               style={{ 
                 color: "var(--text-body)", 
                 fontFamily: "var(--font-body)",
@@ -51,7 +45,7 @@ export const HanamiHero = forwardRef<HTMLElement, HanamiHeroProps>(
           <MotionPreset variant="delayed-presence" delay={2}>
             <a
               href={primaryCta.href}
-              className="inline-flex items-center justify-center font-medium px-8 py-4 rounded-[var(--radius-control)] transition-colors duration-500 hover:bg-brand-primary/90"
+              className="inline-flex items-center justify-center font-medium px-8 py-4 mb-[72px] rounded-[var(--radius-control)] transition-colors duration-500 hover:opacity-90"
               style={{
                 backgroundColor: "var(--brand-primary)",
                 color: "var(--text-on-brand)",
@@ -61,6 +55,14 @@ export const HanamiHero = forwardRef<HTMLElement, HanamiHeroProps>(
             </a>
           </MotionPreset>
         </div>
+
+        {imageUrl && (
+          <MotionPreset variant="relax" delay={3} className="w-full max-w-7xl mx-auto">
+            <div className="w-full aspect-[4/3] md:aspect-[21/9] rounded-t-[var(--radius-card)] md:rounded-[var(--radius-card)] overflow-hidden shadow-sm">
+              <img src={imageUrl} alt="Hero" className="w-full h-full object-cover transition-transform duration-[20s] hover:scale-105" />
+            </div>
+          </MotionPreset>
+        )}
       </section>
     )
   }

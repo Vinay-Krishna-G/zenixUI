@@ -1,7 +1,7 @@
 import { ExperienceConfig } from "@/types/experience"
 
 export const theme: ExperienceConfig["theme"] = {
-  primaryColor: "#b45309",   // Amber/Bronze
+  primaryColor: "#a65d21",   // Muted Terracotta
   secondaryColor: "#78716c", // Stone
   backgroundColor: "#fdfbf7",// Warm Linen
   cardColor: "#ffffff",
