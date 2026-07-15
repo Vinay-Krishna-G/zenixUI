@@ -2,6 +2,7 @@ import { Experience } from "@/types/experience"
 import { manifest } from "./manifest"
 import { theme } from "./theme"
 import { content } from "./content"
+import { editor } from "./editor"
 import { HanamiPreview } from "./preview"
 import { RAW_COMPONENTS } from "@/lib/export/raw-components"
 
@@ -11,6 +12,7 @@ export const hanami: Experience = {
   content,
   preview: HanamiPreview,
   studio: {},
+  editor,
   exporter: {
     files: [
       "hanami/components/index.tsx",

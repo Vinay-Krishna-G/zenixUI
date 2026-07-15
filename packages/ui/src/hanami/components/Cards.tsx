@@ -13,11 +13,11 @@ export const HanamiCards = forwardRef<HTMLElement, HanamiCardsProps>(
       <FocusGroup 
         as="section"
         ref={ref}
-        className="py-24 px-6 max-w-7xl mx-auto w-full"
+        className="py-32 sm:py-48 px-6 max-w-7xl mx-auto w-full"
       >
         <Stillness type="text" className="mb-16">
           <h2 
-            className="text-3xl md:text-5xl font-medium tracking-tight"
+            className="text-3xl md:text-4xl font-normal tracking-normal"
             style={{ 
               color: "var(--text-heading)", 
               fontFamily: "var(--font-heading)" 
@@ -27,7 +27,7 @@ export const HanamiCards = forwardRef<HTMLElement, HanamiCardsProps>(
           </h2>
         </Stillness>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16">
           {items.map((item, index) => (
             <FocusItem key={item.title + index} className="h-full">
               <Presence 
@@ -46,7 +46,7 @@ export const HanamiCards = forwardRef<HTMLElement, HanamiCardsProps>(
                   </div>
                 )}
                 <h3 
-                  className="text-xl font-medium mb-3"
+                  className="text-xl font-normal mb-4"
                   style={{ color: "var(--text-heading)", fontFamily: "var(--font-heading)" }}
                 >
                   {item.title}

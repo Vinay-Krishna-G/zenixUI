@@ -25,7 +25,7 @@ export const HanamiHero = forwardRef<HTMLElement, HanamiHeroProps>(
           <Stillness 
             as="h1"
             type="text"
-            className="text-5xl md:text-7xl lg:text-8xl font-medium tracking-tight mb-8"
+            className="text-4xl md:text-5xl lg:text-6xl font-normal tracking-normal mb-10"
             style={{ 
               color: "var(--text-heading)", 
               fontFamily: "var(--font-heading)",
@@ -36,7 +36,7 @@ export const HanamiHero = forwardRef<HTMLElement, HanamiHeroProps>(
           </Stillness>
 
           <p 
-            className="text-lg md:text-2xl font-normal mb-12 max-w-2xl"
+            className="text-lg md:text-xl font-normal mb-16 max-w-xl"
             style={{ 
               color: "var(--text-body)", 
               fontFamily: "var(--font-body)",

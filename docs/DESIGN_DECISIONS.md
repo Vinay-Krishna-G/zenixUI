@@ -31,12 +31,19 @@ Result:
 Decision:
 [Keep / Revert]
 
-## Post-Pass QA Checklist (Answer after every pass)
+## Post-Pass QA Checklist (Aurora - Craftsmanship)
 1. What is the first thing I see?
 2. What is the second thing I see?
 3. What did I stop noticing after 10 seconds?
 4. Which element feels like it is trying too hard?
 5. If I remove one element, does the page become stronger?
+
+## Post-Pass QA Checklist (Hanami - Hospitality)
+1. If this were a real café, would I slow down or order and leave?
+2. Does this page lower my heart rate?
+3. If I remove all colors, does this still feel human?
+4. Has the Comfort Budget been broken by too many interactions, animations, or cards?
+5. Does every section quietly ask "Would you like to continue?" rather than shouting "LOOK HERE"?
 ```
 
 ---
@@ -292,6 +299,131 @@ In `AuroraExplore.tsx` and `AuroraMakeItYours.tsx`, replaced `py-32` with `py-24
 
 Result:
 The vertical rhythm scales down elegantly. Content feels connected regardless of the device.
+
+Decision:
+Keep
+
+---
+
+Decision #012
+
+World:
+Hanami
+
+Category:
+Hospitality & Typography
+
+Observation:
+The Hanami hero used massive, aggressive headline sizes (`text-8xl`) with tight tracking (`tracking-tight`), inherited from standard SaaS playbooks. This felt like software shouting at the user rather than a café welcoming them.
+
+Hypothesis:
+Scaling the headline down (`text-6xl`), returning to normal tracking for the serif font, and opening up the vertical whitespace will lower the visual volume and create a sense of calm.
+
+Change:
+In `packages/ui/src/hanami/components/Hero.tsx`, reduced headline sizing, removed tight tracking, set font weight to normal, and restricted the subheadline width to `max-w-xl`.
+
+Result:
+The typography now speaks in a normal, conversational volume. It feels like an invitation rather than a billboard.
+
+Decision:
+Keep
+
+---
+
+Decision #013
+
+World:
+Hanami
+
+Category:
+Hospitality & Silence Budget
+
+Observation:
+The Cards section was using typical web layout spacing (`py-24`, `gap-8`) and aggressive typography (`text-5xl font-medium tracking-tight`). It felt like a standard feature grid focused on density rather than comfort, which broke the Silence Budget.
+
+Hypothesis:
+Dramatically increasing the white space (`py-32 sm:py-48`, `gap-12 lg:gap-16`) and softening the typography (`font-normal tracking-normal`) will force the user to slow down. By decreasing information density, we increase the perceived value and comfort of the remaining elements.
+
+Change:
+In `packages/ui/src/hanami/components/Cards.tsx`, increased all section padding and grid gaps, and normalized the heading and card titles to remove artificial urgency.
+
+Result:
+The section now breathes. Instead of rushing to scan the grid, the user is invited to comfortably read each card in its own distinct space.
+
+Decision:
+Keep
+
+---
+
+Decision #014
+
+World:
+Hanami
+
+Category:
+Hospitality & Humanity
+
+Observation:
+The Story section originally used a sans-serif body font with standard tracking/leading. I initially switched it to the serif heading font (`Newsreader`) to make it feel like a novel.
+
+Hypothesis:
+While the serif font looked beautiful, the user noted that three long paragraphs in serif might cause reading fatigue and feel "too literary." The contrast between a serif heading and a warm humanist sans (`Inter`) is actually more welcoming. By keeping the sans-serif body but retaining the increased size (`text-2xl`), open leading (`1.8`), and expanded vertical padding (`py-32 sm:py-48`), the text feels conversational without sacrificing readability.
+
+Change:
+In `packages/ui/src/hanami/components/Story.tsx`, reverted the body font to `var(--font-body)` while retaining the increased text size, open leading, and section padding.
+
+Result:
+The text feels conversational and intimate. It invites reading and avoids reading fatigue. It passes the Conversation Test.
+
+Decision:
+Keep
+
+---
+
+Decision #015
+
+World:
+Hanami
+
+Category:
+Hospitality & Imagination (Gallery)
+
+Observation:
+The Gallery originally used a generic symmetrical CSS grid where every image had equal weight (`aspect-[4/5]`) and standard spacing. This felt like a photo feed rather than a curated emotional space, failing to invite the user to "imagine themselves here."
+
+Hypothesis:
+Replacing the symmetrical grid with a highly editorial, asymmetrical layout will shift the tone. By making the first image dominate (`md:col-span-12 aspect-[21/9]`) and heavily offsetting the subsequent images (`md:mt-24`), we give each image tremendous breathing room. This honors the Silence Budget.
+
+Change:
+In `packages/ui/src/hanami/components/Gallery.tsx`, implemented a dynamic asymmetrical grid based on the index. The headline was centered and softened (`font-normal`), and the padding was dramatically increased (`py-32 sm:py-48`). Added a slow, subtle scale effect (`duration-1000`) on hover to make the images feel alive but unhurried.
+
+Result:
+The gallery now feels like a high-end editorial spread. It does not look like software. It creates a space for imagination rather than mere viewing.
+
+Decision:
+Keep
+
+---
+
+Decision #016
+
+World:
+Hanami
+
+Category:
+Hospitality & Invitation (CTA)
+
+Observation:
+The CTA originally looked like a standard marketing funnel completion point: a heavily bordered `var(--surface-card)` container, massive typography, and a button with a drop shadow. It felt like it was trying to force a conversion.
+
+Hypothesis:
+Removing the bounding box and drop shadow entirely, and relying purely on extreme whitespace (`py-48 md:py-64`) and softened typography, will remove the pressure. The user reaches the CTA because they feel understood, not because they are being squeezed by the UI layout. This honors the "Completion Without Pressure" rule.
+
+Change:
+In `packages/ui/src/hanami/components/CTA.tsx`, deleted the bordered `Stillness` background layer so the CTA flows seamlessly from the previous section. Reduced typography size/tracking, removed the button's elevation shadow, and doubled the padding.
+
+Result:
+The CTA now feels like a gentle signoff or an open door, rather than a checkout button. It invites rather than commands.
 
 Decision:
 Keep

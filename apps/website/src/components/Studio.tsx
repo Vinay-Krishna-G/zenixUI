@@ -5,6 +5,7 @@ import type { ExperienceConfig, Experience } from "@/types/experience"
 import { assembleProject } from "@/lib/export/assembler"
 import { downloadAsZip } from "@/lib/export/zip"
 import { experiences } from "@/experiences"
+import { ContentEditor } from "./studio/ContentEditor"
 
 interface StudioProps {
   id: string
@@ -34,6 +35,7 @@ export function Studio({ id }: StudioProps) {
   // 2. Load from localStorage on mount
   useEffect(() => {
     if (!entry) return
+    /* 
     const saved = localStorage.getItem(`zenix_config_${entry.manifest.id}`)
     if (saved) {
       try {
@@ -42,6 +44,7 @@ export function Studio({ id }: StudioProps) {
         console.error("Failed to parse saved config", e)
       }
     }
+    */
   }, [entry?.manifest.id])
 
   // 3. Save to localStorage on change
@@ -53,13 +56,6 @@ export function Studio({ id }: StudioProps) {
   // Handlers for updating config
   const updateTheme = (key: keyof ExperienceConfig["theme"], value: string) => {
     setConfig(prev => ({ ...prev, theme: { ...prev.theme, [key]: value } }))
-  }
-
-  const updateHero = (key: keyof ExperienceConfig["content"]["hero"], value: string | { label: string, href: string }) => {
-    setConfig(prev => ({
-      ...prev,
-      content: { ...prev.content, hero: { ...prev.content.hero, [key]: value } }
-    }))
   }
 
   const [isExporting, setIsExporting] = useState(false)
@@ -182,33 +178,27 @@ export function Studio({ id }: StudioProps) {
               </div>
             </>
           ) : (
-            <>
-              <div className="space-y-3">
-                <label className="text-xs font-semibold text-zinc-400 uppercase tracking-wider">Headline</label>
-                <textarea 
-                  value={config.content.hero.headline} 
-                  onChange={e => updateHero("headline", e.target.value)} 
-                  className="w-full bg-[#222] border border-[#333] rounded px-3 py-2 text-sm min-h-[80px]" 
+            <div className="h-full">
+              {entry.editor ? (
+                <ContentEditor 
+                  content={config.content} 
+                  schema={entry.editor}
+                  onChange={(sectionKey, sectionData) => {
+                    setConfig(prev => ({
+                      ...prev,
+                      content: {
+                        ...prev.content,
+                        [sectionKey]: sectionData
+                      }
+                    }))
+                  }}
                 />
-              </div>
-              <div className="space-y-3">
-                <label className="text-xs font-semibold text-zinc-400 uppercase tracking-wider">Supporting Text</label>
-                <textarea 
-                  value={config.content.hero.subheadline} 
-                  onChange={e => updateHero("subheadline", e.target.value)} 
-                  className="w-full bg-[#222] border border-[#333] rounded px-3 py-2 text-sm min-h-[80px]" 
-                />
-              </div>
-              <div className="space-y-3">
-                <label className="text-xs font-semibold text-zinc-400 uppercase tracking-wider">Primary Button</label>
-                <input 
-                  type="text" 
-                  value={config.content.hero.primaryCta.label} 
-                  onChange={e => updateHero("primaryCta", { ...config.content.hero.primaryCta, label: e.target.value })} 
-                  className="w-full bg-[#222] border border-[#333] rounded px-3 py-2 text-sm" 
-                />
-              </div>
-            </>
+              ) : (
+                <div className="p-4 text-sm text-zinc-400 text-center border border-dashed border-[#333] rounded">
+                  This experience does not have a content schema yet.
+                </div>
+              )}
+            </div>
           )}
         </div>
       </aside>

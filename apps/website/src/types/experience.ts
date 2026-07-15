@@ -72,6 +72,26 @@ export interface ExperienceConfig<TContent = any> {
   content: TContent
 }
 
+// ─── Editor Metadata ─────────────────────────────────────────────────────────
+
+export type FieldKind = "string" | "title" | "textarea" | "richText" | "image" | "button" | "url" | "list" | "object" | "color";
+
+export interface FieldDefinition {
+  kind: FieldKind;
+  label?: string;
+  // If kind === "object", fields defines the nested object structure
+  fields?: Record<string, FieldDefinition>;
+  // If kind === "list", schema defines the schema of the list items
+  schema?: Record<string, FieldDefinition>;
+}
+
+export interface ExperienceEditorSchema {
+  order: string[];
+  labels: Record<string, string>;
+  fields: Record<string, Record<string, FieldDefinition>>;
+  component?: React.ComponentType<any>;
+}
+
 // ─── Experience Capability Interface ──────────────────────────────────────────
 
 import type React from "react"
@@ -96,5 +116,8 @@ export interface Experience {
     dependencies?: Record<string, string> // e.g. { "lucide-react": "^0.292.0" }
     // Future expansion: assets, fonts, metadata, seo, post processing
   }
+
+  // Capability: How it exposes metadata for the Studio Content Editor
+  editor?: ExperienceEditorSchema
 }
 

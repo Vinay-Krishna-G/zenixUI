@@ -10,21 +10,12 @@ export const HanamiCTA = forwardRef<HTMLElement, HanamiCTAProps>(
       <FocusGroup 
         as="section"
         ref={ref}
-        className="py-32 px-6 w-full flex flex-col items-center justify-center text-center relative overflow-hidden"
+        className="py-48 md:py-64 px-6 w-full flex flex-col items-center justify-center text-center relative"
       >
-        <Stillness 
-          type="bg" 
-          className="absolute inset-0 z-0 border-y" 
-          style={{ 
-            backgroundColor: "var(--surface-card)",
-            borderColor: "var(--surface-border)"
-          }}
-        />
-        
-        <div className="relative z-10 max-w-2xl flex flex-col items-center py-12">
+        <div className="relative z-10 max-w-xl flex flex-col items-center">
           <Stillness type="text">
             <h2 
-              className="text-4xl md:text-6xl font-medium tracking-tight mb-6"
+              className="text-3xl md:text-5xl font-normal tracking-normal mb-8"
               style={{ 
                 color: "var(--text-heading)", 
                 fontFamily: "var(--font-heading)" 
@@ -33,7 +24,7 @@ export const HanamiCTA = forwardRef<HTMLElement, HanamiCTAProps>(
               {headline}
             </h2>
             <p 
-              className="text-lg md:text-2xl font-normal opacity-90 mb-12"
+              className="text-lg md:text-xl font-normal opacity-90 mb-16"
               style={{ color: "var(--text-body)" }}
             >
               {subheadline}
@@ -49,7 +40,7 @@ export const HanamiCTA = forwardRef<HTMLElement, HanamiCTAProps>(
               color: "var(--text-on-brand)",
               '--space-padding': '16px 36px',
               '--space-radius': 'var(--radius-control)',
-              '--space-elevation': '0 4px 24px rgba(0,0,0,0.05)'
+              '--space-elevation': '0px'
             } as React.CSSProperties}
           >
             {primaryCta.label}

@@ -3,6 +3,7 @@ import type { AuroraContent } from "@zenix/ui"
 import { manifest }       from "./manifest"
 import { defaultTheme }   from "./theme"
 import { content }        from "./content"
+import { editor }         from "./editor"
 
 // ─── Preview Component ───────────────────────────────────────────────────────
 import { 
@@ -44,6 +45,7 @@ export const aurora: Experience = {
   preview: AuroraPreview,
   
   studio: {},
+  editor,
   
   exporter: {
     files: [
