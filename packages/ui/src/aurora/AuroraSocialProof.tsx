@@ -31,11 +31,12 @@ export function AuroraSocialProof({ content }: AuroraSocialProofProps) {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {content.quotes.map((item, idx) => (
+          {content.quotes.map((item, index) => (
             <AuroraCard 
-              key={idx} 
+              key={index}
+              index={index} 
               className="p-8 sm:p-10 flex flex-col justify-between opacity-0 group relative overflow-hidden"
-              style={{ animation: `fade-in-up 1s ease-out ${0.4 + idx * 0.1}s forwards` }}
+              style={{ animation: `fade-in-up 1s ease-out ${0.4 + index * 0.1}s forwards` }}
             >
               {/* Subtle light effect on hover */}
               <div className="absolute top-0 right-0 w-32 h-32 bg-brand-primary/10 blur-[50px] -translate-y-1/2 translate-x-1/2 transition-opacity duration-700 opacity-0 group-hover:opacity-100 mix-blend-screen" />

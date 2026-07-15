@@ -62,7 +62,7 @@ export const aurora: Experience = {
       "aurora/AuroraSocialProof.tsx",
       "aurora/AuroraCTA.tsx",
       "aurora/AuroraFooter.tsx",
-      "aurora/behavior/useMousePosition.ts",
+      "aurora/behavior/MotionEngine.ts",
       "aurora/behavior/useFlashlight.ts",
       "aurora/behavior/AdaptiveCursor.tsx"
     ],

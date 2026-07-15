@@ -1,6 +1,6 @@
-import { ExperienceConfig } from "@/types/experience"
+import { ExperienceManifest } from "@/types/experience"
 
-export const manifest: ExperienceConfig["manifest"] = {
+export const manifest: ExperienceManifest = {
   id: "hanami",
   name: "Hanami",
   description: "Every visitor should feel expected.",

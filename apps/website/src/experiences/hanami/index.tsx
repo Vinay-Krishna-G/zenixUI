@@ -24,6 +24,7 @@ export const hanami: Experience = {
       "hanami/components/CTA.tsx",
       "hanami/components/Footer.tsx",
       "hanami/behavior/index.ts",
+      "hanami/behavior/MotionPreset.tsx",
       "hanami/behavior/Presence.tsx",
       "hanami/behavior/Stillness.tsx",
       "hanami/behavior/Focus.tsx",

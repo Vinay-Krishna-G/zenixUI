@@ -1,9 +1,9 @@
 import Link from "next/link"
 import Image from "next/image"
-import type { ExperienceEntry } from "@/types/experience"
+import type { Experience } from "@/types/experience"
 
 interface ExperienceCardProps {
-  entry: ExperienceEntry
+  entry: Experience
 }
 
 export function ExperienceCard({ entry }: ExperienceCardProps) {

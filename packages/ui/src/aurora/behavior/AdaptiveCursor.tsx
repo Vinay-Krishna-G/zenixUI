@@ -1,19 +1,26 @@
 "use client"
-import React, { useEffect, useState } from "react"
-import { useMousePosition } from "./useMousePosition"
+import React, { useEffect, useRef } from "react"
+import { useMotionEngine } from "./MotionEngine"
 
 export function AdaptiveCursor() {
-  const { x, y } = useMousePosition()
-  const [isHovering, setIsHovering] = useState(false)
-  const [isVisible, setIsVisible] = useState(false)
+  const dotRef = useRef<HTMLDivElement>(null)
+  const ringRef = useRef<HTMLDivElement>(null)
+  const wrapperRef = useRef<HTMLDivElement>(null)
+
+  // We keep tracking hover state in React because it only updates rarely (on enter/leave)
+  const [isHovering, setIsHovering] = React.useState(false)
+  const [isVisible, setIsVisible] = React.useState(false)
+
+  // Current interpolated positions
+  const currentX = useRef(-1000)
+  const currentY = useRef(-1000)
 
   useEffect(() => {
-    // Show cursor only after first mouse move to prevent it from appearing in top-left corner
     const handleFirstMove = () => {
       setIsVisible(true)
-      window.removeEventListener("mousemove", handleFirstMove)
+      window.removeEventListener("pointermove", handleFirstMove)
     }
-    window.addEventListener("mousemove", handleFirstMove)
+    window.addEventListener("pointermove", handleFirstMove)
 
     // Listen for hover state on interactive elements
     const handleMouseOver = (e: MouseEvent) => {
@@ -24,30 +31,48 @@ export function AdaptiveCursor() {
 
     window.addEventListener("mouseover", handleMouseOver)
     return () => {
-      window.removeEventListener("mousemove", handleFirstMove)
+      window.removeEventListener("pointermove", handleFirstMove)
       window.removeEventListener("mouseover", handleMouseOver)
     }
   }, [])
 
-  // If running on a touch device or before first move, don't show custom cursor
+  useMotionEngine(({ pointerX, pointerY }) => {
+    if (!isVisible) return
+
+    // Interpolation (spring physics / easing)
+    // Adjust interpolation factor (e.g., 0.6) for tighter or looser attachment
+    // 1.0 means instant. The user requested 2-4 pixels maximum delay, so very tight.
+    const ease = 0.6 
+    currentX.current += (pointerX - currentX.current) * ease
+    currentY.current += (pointerY - currentY.current) * ease
+
+    if (dotRef.current) {
+      dotRef.current.style.transform = `translate3d(${currentX.current}px, ${currentY.current}px, 0) translate(-50%, -50%) scale(${isHovering ? 2.5 : 1})`
+    }
+    if (ringRef.current) {
+      ringRef.current.style.transform = `translate3d(${currentX.current}px, ${currentY.current}px, 0) translate(-50%, -50%)`
+    }
+  })
+
+  // If running on a touch device, don't show custom cursor
   if (typeof window !== "undefined" && window.matchMedia("(hover: none)").matches) {
     return null
   }
 
-  if (!isVisible) return null
-
   return (
     <>
       <div
+        ref={wrapperRef}
         className="pointer-events-none fixed inset-0 z-[9999] mix-blend-difference transition-opacity duration-300"
         style={{
           opacity: isVisible ? 1 : 0,
         }}
       >
         <div
-          className="absolute rounded-full bg-white transition-all duration-300 ease-out"
+          ref={dotRef}
+          className="absolute rounded-full bg-white transition-all duration-300 ease-out will-change-transform"
           style={{
-            transform: `translate(${x}px, ${y}px) translate(-50%, -50%) scale(${isHovering ? 2.5 : 1})`,
+            transform: `translate3d(-1000px, -1000px, 0) translate(-50%, -50%) scale(1)`,
             width: "12px",
             height: "12px",
             opacity: isHovering ? 0.3 : 0.8,
@@ -56,22 +81,16 @@ export function AdaptiveCursor() {
         />
         {isHovering && (
           <div
-            className="absolute rounded-full border border-white/40 transition-all duration-500 ease-out"
+            ref={ringRef}
+            className="absolute rounded-full border border-white/40 transition-all duration-500 ease-out will-change-transform"
             style={{
-              transform: `translate(${x}px, ${y}px) translate(-50%, -50%)`,
+              transform: `translate3d(-1000px, -1000px, 0) translate(-50%, -50%)`,
               width: "40px",
               height: "40px",
             }}
           />
         )}
       </div>
-      {/* 
-        We also need to hide the default cursor system-wide when not hovering, 
-        but in a React component, doing it globally via JS can be tricky.
-        Usually, it's done via CSS: `body { cursor: none; }`
-        and `a, button { cursor: none; }`
-        We will inject this CSS globally.
-      */}
       <style dangerouslySetInnerHTML={{ __html: `
         @media (hover: hover) and (pointer: fine) {
           body, a, button, input, select, textarea, [role="button"], [data-interactive="true"] {

@@ -45,20 +45,43 @@ The experience must feel native and beautifully adapted on mobile, tablet, and d
 **90+ Score.**
 Performance, Best Practices, SEO, and Accessibility must score 90+ out of the box for the exported Next.js application.
 
-## Behavior Manifestos
+## World Design System
 
-To ensure the identity of each world remains focused, any new component or animation must adhere to the world's manifesto.
+We are not building a Component Library. We are building a **World Design System**.
+Every world must follow this cascade:
+`Identity -> Behavior -> Forbidden -> Emotion -> Components`
 
-### Aurora: "Calm Intelligence"
-* Cursor responds
-* Glass refracts
-* Light follows
-* Motion is purposeful
-* Nothing bounces
+To ensure the identity of each world remains focused, any new component or animation must adhere strictly to these constraints.
 
-### Hanami: "Grace in Stillness"
-* Motion waits
-* Spacing breathes
-* Typography leads
-* Color whispers
-* Scroll feels weightless
+### Aurora
+
+* **Identity**: Calm Intelligence
+* **Behavior**: Purposeful Motion
+* **Forbidden**: Never bounce, overshoot, wobble, or elastic.
+* **Emotion**: Confidence
+
+*Interaction Budget*: Aurora is allowed a maximum of 4 premium interactions (Cursor, Cards, Buttons, Navigation). Do not animate everything. Treat it like a native macOS application.
+
+### Hanami
+
+* **Identity**: Grace in Stillness
+* **Behavior**: Motion Waits
+* **Forbidden**: Never rush, pulse, flash, rotate, or shake.
+* **Emotion**: Peace
+
+---
+
+## World Scoring
+
+Every world must evaluate itself using the **World Score**.
+The absolute most critical metric is the **3-Second Emotional Check**: "Can someone recognize the world after 3 seconds without seeing the title?"
+
+**Categories (out of 10):**
+1. **Identity** (Does it look unique?)
+2. **Motion** (Does motion reinforce the feeling?)
+3. **Typography** (Is the text setting distinct?)
+4. **Interaction** (Are the micro-interactions memorable?)
+5. **Recognition** (The 3-Second Emotional Check)
+
+*If Recognition < 8, the world goes back to design.*
+*If Total < 45/50, the world goes back to design.*

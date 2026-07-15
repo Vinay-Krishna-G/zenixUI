@@ -28,11 +28,12 @@ export function AuroraMakeItYours({ content }: AuroraMakeItYoursProps) {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {content.items.map((item, idx) => (
+          {content.items.map((item, index) => (
             <AuroraCard 
-              key={idx} 
+              key={index} 
+              index={index}
               className="p-8 flex flex-col justify-between opacity-0 min-h-[440px]"
-              style={{ animation: `fade-in-up 1s ease-out ${0.4 + idx * 0.1}s forwards` }}
+              style={{ animation: `fade-in-up 1s ease-out ${0.4 + index * 0.1}s forwards` }}
             >
               <div className="mb-12">
                 <AuroraHeading as="h3" className="text-2xl mb-4 flex items-center gap-3">
